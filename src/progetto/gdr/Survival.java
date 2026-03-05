@@ -8,7 +8,7 @@ package progetto.gdr;
  *
  * @author lin.elena
  */
-public class ProgettoGDR {
+public class Survival {
 
     /**
      * @param args the command line arguments
