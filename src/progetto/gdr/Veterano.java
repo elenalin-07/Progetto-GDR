@@ -8,6 +8,15 @@ package progetto.gdr;
  *
  * @author lin.elena
  */
-public class Oggetto {
+public class Veterano extends Personaggio{
+    public Veterano(String nome){
+        super(nome);
+        attaco = 60;
+    }
     
+    public void abilitaSpecial(){
+        nCibo++;
+        salute = maxSalute;
+        attaco += 20;
+    }
 }

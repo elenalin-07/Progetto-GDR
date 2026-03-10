@@ -4,16 +4,20 @@
  */
 package progetto.gdr;
 
-import java.util.Random;
-
 /**
  *
  * @author lin.elena
  */
-public class EventiManager {
-    Random random;
+public class Medico extends Personaggio{
+    public Medico(String nome){
+        super(nome);
+        salute = 120;
+        nMedicine = 1;
+        maxSalute = 120;
+    }
     
-    public void eventoCasual(){
-        random = new Random();
+    public void abilitaSpecial(){
+        salute = maxSalute;
+        nMedicine++;
     }
 }
