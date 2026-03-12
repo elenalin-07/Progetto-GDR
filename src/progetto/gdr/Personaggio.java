@@ -28,6 +28,10 @@ public abstract class Personaggio {
     
     public abstract void abilitaSpecial();
     
+    public String getNome(){
+        return nome;
+    }
+    
     public int getSalute(){
         return salute;
     }
@@ -38,6 +42,26 @@ public abstract class Personaggio {
     
     public int getFame(){
         return fame;
+    }
+    
+    public int getAttaco(){
+        return attaco;
+    }
+    
+    public int getNAcqua(){
+        return nAcqua;
+    }
+    
+    public int getNCibo(){
+        return nCibo;
+    }
+    
+    public int getNMedicine(){
+        return nMedicine;
+    }
+    
+    public int getMaxSalute(){
+        return maxSalute;
     }
     
     public void addAcqua(){
