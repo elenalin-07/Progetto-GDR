@@ -18,20 +18,13 @@ import java.util.ArrayList;
  * @author lin.elena
  */
 public class FileManager {
-    private String fileCSV, fileBinary;
-    
-    public FileManager(String csv, String binary){
-        fileCSV = csv;
-        fileBinary = binary;
-    }
-    
-    public void writeCSV(String dati) throws IOException{
+    public static void writeCSV(String fileCSV, String dati) throws IOException{
         try(BufferedWriter writer = new BufferedWriter(new FileWriter(fileCSV))){
             writer.write(dati);
         }
     }
     
-    public String readCSV() throws FileNotFoundException, IOException{
+    public static String readCSV(String fileCSV) throws FileNotFoundException, IOException{
         String dati;
         try(BufferedReader reader = new BufferedReader(new FileReader(fileCSV))){
             dati = reader.readLine();
@@ -39,7 +32,7 @@ public class FileManager {
         return dati;
     }
     
-    public void writeBinary(Personaggio p) throws FileNotFoundException, IOException{
+    public void writeBinary(String fileBinary, Personaggio p) throws FileNotFoundException, IOException{
         try(RandomAccessFile raf = new RandomAccessFile(fileBinary, "rw")){
             raf.writeUTF(p.getNome());
             raf.writeInt(p.getSalute());
@@ -53,11 +46,13 @@ public class FileManager {
         }
     }
     
-    public Personaggio readBinary() throws FileNotFoundException, IOException{
-        Personaggio p;
+    public Personaggio readBinary(String fileBinary) throws FileNotFoundException, IOException{
+        Personaggio p = null;
+        String nome;
+        String dati;
         try(RandomAccessFile raf = new RandomAccessFile(fileBinary, "r")){
             raf.seek(0);
-            String nome = raf.readUTF();
+            nome = raf.readUTF();
             int salute = raf.readInt();
             int sete = raf.readInt();
             int fame = raf.readInt();
@@ -67,6 +62,17 @@ public class FileManager {
             int nMedicine = raf.readInt();
             int maxSalute = raf.readInt();
         }
-        p = new Personaggio
+        switch(nome){
+            case "cuoco":
+                p = new Cuoco(nome);
+                break;
+            case "medico":
+                p = new Medico(nome);
+                break;
+            case "veterano":
+                p = new Veterano(nome);
+                break;
+        }
+        return p; 
     }
 }

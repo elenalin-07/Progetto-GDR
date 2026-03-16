@@ -89,4 +89,18 @@ public abstract class Personaggio {
         }
         return true;
     }
+    public void setDati(int salute, int sete, int fame, int attaco, int nAcqua, int nCibo, int nMedicine, int maxSalute){
+        this.salute = salute;
+        this.sete = sete;
+        this.fame = fame;
+        this.attaco = attaco;
+        this.nAcqua = nAcqua;
+        this.nCibo = nCibo;
+        this.nMedicine = nMedicine;
+        this.maxSalute = maxSalute;
+    }
+    
+    public void setPersonaggio(Personaggio p){
+        this.equals(p);
+    }
 }
