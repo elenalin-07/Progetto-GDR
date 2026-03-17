@@ -14,6 +14,7 @@ public class Veterano extends Personaggio{
         attaco = 60;
     }
     
+    @Override
     public void abilitaSpecial(){
         nCibo++;
         salute = maxSalute;

@@ -16,6 +16,7 @@ public class Medico extends Personaggio{
         maxSalute = 120;
     }
     
+    @Override
     public void abilitaSpecial(){
         salute = maxSalute;
         nMedicine++;

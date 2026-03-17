@@ -13,6 +13,7 @@ import java.util.ArrayList;
 public abstract class Personaggio {
     protected int salute, sete, fame, attaco, nAcqua, nCibo, nMedicine, maxSalute;
     protected String nome;
+    protected boolean stato;
     
     public Personaggio(String nome){
         this.nome = nome;
@@ -24,6 +25,7 @@ public abstract class Personaggio {
         nCibo = 1;
         nMedicine = 0;
         maxSalute = 100;
+        stato = true;
     }
     
     public abstract void abilitaSpecial();
@@ -64,12 +66,12 @@ public abstract class Personaggio {
         return maxSalute;
     }
     
-    public void addAcqua(){
-        nAcqua++;
+    public void addAcqua(int num){
+        nAcqua += num;
     }
     
-    public void addCibo(){
-        nCibo++;
+    public void addCibo(int num){
+        nCibo += num;
     }
     
     public boolean bere(){
@@ -102,5 +104,24 @@ public abstract class Personaggio {
     
     public void setPersonaggio(Personaggio p){
         this.equals(p);
+    }
+    
+    public void danni(int d){
+        salute -= d;
+        if(salute <= 0){
+            stato = false;
+        }
+    }
+    
+    public boolean getStato(){
+        return stato;
+    }
+    
+    public void aumentaSete(int num){
+        sete += num;
+    }
+    
+    public void aumentaFame(int num){
+        fame += num;
     }
 }

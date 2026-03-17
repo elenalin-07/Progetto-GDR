@@ -15,6 +15,7 @@ public class Cuoco extends Personaggio{
         nCibo = 2;
     }
     
+    @Override
     public void abilitaSpecial(){
         nCibo ++;
         nAcqua += 2;
