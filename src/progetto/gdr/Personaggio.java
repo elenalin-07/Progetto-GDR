@@ -91,6 +91,16 @@ public abstract class Personaggio {
         }
         return true;
     }
+    
+    public boolean cura(){
+        nMedicine--;
+        if(nMedicine < 0){
+            nMedicine = 0;
+            return false;
+        }
+        return true;
+    }
+    
     public void setDati(int salute, int sete, int fame, int attaco, int nAcqua, int nCibo, int nMedicine, int maxSalute){
         this.salute = salute;
         this.sete = sete;

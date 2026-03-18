@@ -38,6 +38,43 @@ public class Deserto extends Mappa{
     
     @Override
     public void eventoCasuale(){
+        int num = random.nextInt(16);
         
+        switch(num){
+            case 0:
+                cibo();
+                break;
+            case 1:
+                acqua();
+                break;
+            case 3:
+                medicine();
+                break;
+            case 5:
+                caldo();
+                break;
+            case 6:
+                cibo();
+                break;
+            case 7:
+                caldo();
+                break;
+            case 8:
+                acqua();
+            case 9:
+                villaggioAbandonato();
+                break;
+            case 11:
+                lupo();
+                break;
+            case 12:
+                medicine();
+                break;
+            case 14:
+                banditi();
+                break;
+            case 15:
+                stradaBloccata();
+        }
     }
 }

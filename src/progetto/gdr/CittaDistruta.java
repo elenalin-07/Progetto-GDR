@@ -17,7 +17,7 @@ public class CittaDistruta extends Mappa{
         personaggio.danni(random.nextInt(20,30));
     }
     
-    public void ospdale(){
+    public void ospedale(){
         medicine();
         int num = random.nextInt(10);
         if(num < 2){
@@ -38,6 +38,44 @@ public class CittaDistruta extends Mappa{
     
     @Override
     public void eventoCasuale(){
+        int num = random.nextInt(16);
         
+        switch(num){
+            case 0:
+                cibo();
+                break;
+            case 1:
+                acqua();
+                break;
+            case 3:
+                medicine();
+                break;
+            case 5:
+                negozio();
+                break;
+            case 6:
+                cibo();
+                break;
+            case 7:
+                negozio();
+                break;
+            case 8:
+                acqua();
+            case 9:
+                nemico();
+                break;
+            case 11:
+                ospedale();
+                break;
+            case 12:
+                medicine();
+                break;
+            case 14:
+                banditi();
+                break;
+            case 15:
+                stradaBloccata();
+                break;
+        }
     }
 }

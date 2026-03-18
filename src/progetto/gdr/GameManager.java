@@ -13,17 +13,20 @@ import java.util.Random;
 public class GameManager {
     private int turni, days;
     private Personaggio personaggio;
-    Random random;
+    private Random random;
+    private Mappa mappa;
     
-    public GameManager(Personaggio p){
+    public GameManager(Personaggio p, Mappa m){
         turni = 0;
         personaggio = p;
         random = new Random();
+        mappa = m;
     }
     
     public void esplora(){
         turni++;
         days = turni/3;
+        mappa.eventoCasuale();
     }
     
     public int getTurni(){
@@ -32,5 +35,21 @@ public class GameManager {
      
     public int getDays(){
         return days;
+    }
+    
+    public boolean mangia(){
+        return personaggio.mangia();
+    }
+    
+    public boolean bere(){
+        return personaggio.bere();
+    }
+    
+    public boolean cura(){
+        return personaggio.cura();
+    }
+    
+    public void abilitaSpecial(){
+        personaggio.abilitaSpecial();
     }
 }

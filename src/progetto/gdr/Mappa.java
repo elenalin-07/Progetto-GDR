@@ -82,5 +82,9 @@ public abstract class Mappa {
         return true;
     }
     
+    public void medicante(){
+        
+    }
+    
     public abstract void eventoCasuale();
 }
