@@ -12,11 +12,9 @@ import java.util.ArrayList;
  */
 public abstract class Personaggio {
     protected int salute, sete, fame, attaco, nAcqua, nCibo, nMedicine, maxSalute;
-    protected String nome;
     protected boolean stato;
     
-    public Personaggio(String nome){
-        this.nome = nome;
+    public Personaggio(){
         salute = 100;
         sete = 0;
         fame = 0;
@@ -29,10 +27,6 @@ public abstract class Personaggio {
     }
     
     public abstract void abilitaSpecial();
-    
-    public String getNome(){
-        return nome;
-    }
     
     public int getSalute(){
         return salute;

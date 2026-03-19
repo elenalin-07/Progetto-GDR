@@ -9,8 +9,7 @@ package progetto.gdr;
  * @author lin.elena
  */
 public class Cuoco extends Personaggio{
-    public Cuoco(String nome){
-        super(nome);
+    public Cuoco(){
         nAcqua = 2;
         nCibo = 2;
     }

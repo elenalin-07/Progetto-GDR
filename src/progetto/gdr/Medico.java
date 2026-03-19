@@ -9,8 +9,7 @@ package progetto.gdr;
  * @author lin.elena
  */
 public class Medico extends Personaggio{
-    public Medico(String nome){
-        super(nome);
+    public Medico(){
         salute = 120;
         nMedicine = 1;
         maxSalute = 120;

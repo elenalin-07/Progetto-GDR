@@ -11,12 +11,17 @@ package progetto.gdr;
 public class FormMap extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(FormMap.class.getName());
-
+    private FormPersonaggio formPersonaggio;
+    private String mapSelected;
     /**
      * Creates new form FormMap
      */
     public FormMap() {
         initComponents();
+        
+        mapSelected = null;
+        btnNext.setEnabled(false);
+        formPersonaggio = new FormPersonaggio();
     }
 
     /**
@@ -29,63 +34,97 @@ public class FormMap extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        btnNext = new javax.swing.JButton();
-        btnCuoco = new javax.swing.JButton();
-        btnMedico = new javax.swing.JButton();
-        btn = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        btnNext = new javax.swing.JButton();
+        btnDeserto = new javax.swing.JButton();
+        btnMare = new javax.swing.JButton();
+        btnCittaDistruta = new javax.swing.JButton();
+        lblDescrizione = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(700, 600));
         setSize(new java.awt.Dimension(700, 600));
 
-        btnNext.setBackground(new java.awt.Color(0, 0, 153));
-        btnNext.setFont(new java.awt.Font("Stencil", 0, 12)); // NOI18N
-        btnNext.setForeground(new java.awt.Color(255, 255, 255));
-        btnNext.setText("Next");
-        btnNext.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jPanel1.setBackground(new java.awt.Color(243, 243, 209));
 
         jLabel1.setFont(new java.awt.Font("Stencil", 0, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 153));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Scegli IL luogo");
 
+        btnNext.setBackground(new java.awt.Color(0, 0, 153));
+        btnNext.setFont(new java.awt.Font("Stencil", 0, 12)); // NOI18N
+        btnNext.setForeground(new java.awt.Color(255, 255, 255));
+        btnNext.setText("Next");
+        btnNext.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnNext.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnNext.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNextActionPerformed(evt);
+            }
+        });
+
+        btnDeserto.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 226, 153), 2));
+        btnDeserto.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnDeserto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDesertoActionPerformed(evt);
+            }
+        });
+
+        btnMare.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 226, 153), 2));
+        btnMare.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnMare.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMareActionPerformed(evt);
+            }
+        });
+
+        btnCittaDistruta.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 226, 153), 2));
+        btnCittaDistruta.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnCittaDistruta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCittaDistrutaActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(208, 208, 208)
-                .addComponent(jLabel1)
-                .addContainerGap(211, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel1Layout.createSequentialGroup()
-                    .addGap(24, 24, 24)
-                    .addComponent(btnCuoco, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(26, 26, 26)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(btnNext, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnMedico, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE))
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
-                    .addComponent(btn, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(24, 24, 24)))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(206, 206, 206)
+                        .addComponent(jLabel1))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(29, 29, 29)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblDescrizione, javax.swing.GroupLayout.PREFERRED_SIZE, 636, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(btnDeserto, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(btnNext, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(btnCittaDistruta, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE))
+                                .addGap(18, 18, 18)
+                                .addComponent(btnMare, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(35, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(43, 43, 43)
+                .addGap(73, 73, 73)
                 .addComponent(jLabel1)
-                .addContainerGap(520, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel1Layout.createSequentialGroup()
-                    .addGap(115, 115, 115)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(btnCuoco, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btnMedico, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btn, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGap(92, 92, 92)
-                    .addComponent(btnNext, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(44, Short.MAX_VALUE)))
+                .addGap(62, 62, 62)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnDeserto, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnMare, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnCittaDistruta, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
+                .addComponent(lblDescrizione, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(38, 38, 38)
+                .addComponent(btnNext, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(38, 38, 38))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -101,6 +140,26 @@ public class FormMap extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextActionPerformed
+        formPersonaggio.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_btnNextActionPerformed
+
+    private void btnDesertoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDesertoActionPerformed
+        mapSelected = "deserto";
+        btnNext.setEnabled(true);
+    }//GEN-LAST:event_btnDesertoActionPerformed
+
+    private void btnCittaDistrutaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCittaDistrutaActionPerformed
+        mapSelected = "deserto";
+        btnNext.setEnabled(true);
+    }//GEN-LAST:event_btnCittaDistrutaActionPerformed
+
+    private void btnMareActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMareActionPerformed
+        mapSelected = "mare";
+        btnNext.setEnabled(true);
+    }//GEN-LAST:event_btnMareActionPerformed
 
     /**
      * @param args the command line arguments
@@ -128,11 +187,12 @@ public class FormMap extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btn;
-    private javax.swing.JButton btnCuoco;
-    private javax.swing.JButton btnMedico;
+    private javax.swing.JButton btnCittaDistruta;
+    private javax.swing.JButton btnDeserto;
+    private javax.swing.JButton btnMare;
     private javax.swing.JButton btnNext;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel lblDescrizione;
     // End of variables declaration//GEN-END:variables
 }

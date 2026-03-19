@@ -34,7 +34,6 @@ public class FileManager {
     
     public void writeBinary(String fileBinary, Personaggio p) throws FileNotFoundException, IOException{
         try(RandomAccessFile raf = new RandomAccessFile(fileBinary, "rw")){
-            raf.writeUTF(p.getNome());
             raf.writeInt(p.getSalute());
             raf.writeInt(p.getSete());
             raf.writeInt(p.getFame());
@@ -61,17 +60,6 @@ public class FileManager {
             int nCibo = raf.readInt();
             int nMedicine = raf.readInt();
             int maxSalute = raf.readInt();
-        }
-        switch(nome){
-            case "cuoco":
-                p = new Cuoco(nome);
-                break;
-            case "medico":
-                p = new Medico(nome);
-                break;
-            case "veterano":
-                p = new Veterano(nome);
-                break;
         }
         return p; 
     }
