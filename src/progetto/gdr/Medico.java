@@ -10,7 +10,6 @@ package progetto.gdr;
  */
 public class Medico extends Personaggio{
     public Medico(){
-        salute = 120;
         nMedicine = 1;
         maxSalute = 120;
     }

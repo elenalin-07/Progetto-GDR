@@ -14,7 +14,7 @@ public class Survival {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        FormMenu fm = new FormMenu();
+        FormGioco fm = new FormGioco();
         fm.setVisible(true);
     }
     

@@ -59,14 +59,15 @@
                               <Group type="102" attributes="0">
                                   <Component id="btnDeserto" min="-2" pref="200" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="btnNext" max="32767" attributes="0"/>
-                                      <Component id="btnCittaDistruta" pref="200" max="32767" attributes="0"/>
-                                  </Group>
+                                  <Component id="btnCittaDistruta" min="-2" pref="200" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Component id="btnMare" min="-2" pref="200" max="-2" attributes="0"/>
                               </Group>
                           </Group>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="249" max="-2" attributes="0"/>
+                          <Component id="btnNext" min="-2" pref="200" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace pref="35" max="32767" attributes="0"/>
@@ -79,16 +80,18 @@
                   <EmptySpace min="-2" pref="73" max="-2" attributes="0"/>
                   <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="62" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="btnDeserto" alignment="3" min="-2" pref="200" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="btnMare" alignment="0" min="-2" pref="200" max="-2" attributes="0"/>
-                      <Component id="btnCittaDistruta" alignment="3" min="-2" pref="200" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="btnDeserto" alignment="3" min="-2" pref="200" max="-2" attributes="0"/>
+                          <Component id="btnCittaDistruta" alignment="3" min="-2" pref="200" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
                   <EmptySpace pref="41" max="32767" attributes="0"/>
                   <Component id="lblDescrizione" min="-2" pref="62" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="btnNext" min="-2" pref="49" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="58" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -133,13 +136,6 @@
         </Component>
         <Component class="javax.swing.JButton" name="btnDeserto">
           <Properties>
-            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-              <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
-                <LineBorder thickness="2">
-                  <Color PropertyName="color" blue="99" green="e2" red="ff" type="rgb"/>
-                </LineBorder>
-              </Border>
-            </Property>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
               <Color id="Cursore mano"/>
             </Property>
@@ -150,13 +146,6 @@
         </Component>
         <Component class="javax.swing.JButton" name="btnMare">
           <Properties>
-            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-              <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
-                <LineBorder thickness="2">
-                  <Color PropertyName="color" blue="99" green="e2" red="ff" type="rgb"/>
-                </LineBorder>
-              </Border>
-            </Property>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
               <Color id="Cursore mano"/>
             </Property>
@@ -167,13 +156,6 @@
         </Component>
         <Component class="javax.swing.JButton" name="btnCittaDistruta">
           <Properties>
-            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-              <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
-                <LineBorder thickness="2">
-                  <Color PropertyName="color" blue="99" green="e2" red="ff" type="rgb"/>
-                </LineBorder>
-              </Border>
-            </Property>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
               <Color id="Cursore mano"/>
             </Property>

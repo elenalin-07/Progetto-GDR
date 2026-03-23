@@ -15,7 +15,6 @@ public abstract class Personaggio {
     protected boolean stato;
     
     public Personaggio(){
-        salute = 100;
         sete = 0;
         fame = 0;
         attaco = 30;
@@ -23,6 +22,7 @@ public abstract class Personaggio {
         nCibo = 1;
         nMedicine = 0;
         maxSalute = 100;
+        salute = maxSalute;
         stato = true;
     }
     

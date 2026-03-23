@@ -20,14 +20,17 @@ public class FormPersonaggio extends javax.swing.JFrame {
     public FormPersonaggio() {
         initComponents();
         
+        lblNomeVuoto.setVisible(false);
         personaggioSelected = null;
         btnNext.setEnabled(false);
         nome = null;
-        formGioco = new FormGioco();
+        
     }
     
+    
+    
     public void check(){
-        if(nome != null && personaggioSelected != null){
+        if(tfdNome.getText().trim().length() > 0 && personaggioSelected != null){
             btnNext.setEnabled(true);
         }
     }
@@ -48,28 +51,25 @@ public class FormPersonaggio extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         tfdNome = new javax.swing.JTextField();
         btnNext = new javax.swing.JButton();
-        btnNome = new javax.swing.JButton();
+        lblNomeVuoto = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(243, 243, 209));
         jPanel1.setPreferredSize(new java.awt.Dimension(700, 600));
 
-        btnCuoco.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 226, 153), 2));
         btnCuoco.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCuocoActionPerformed(evt);
             }
         });
 
-        btnMedico.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 226, 153), 2));
         btnMedico.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnMedicoActionPerformed(evt);
             }
         });
 
-        btnVeterano.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 226, 153), 2));
         btnVeterano.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnVeteranoActionPerformed(evt);
@@ -82,7 +82,7 @@ public class FormPersonaggio extends javax.swing.JFrame {
         jLabel1.setText("Scegli un personaggio");
 
         tfdNome.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        tfdNome.setToolTipText("Inserisci il nome...");
+        tfdNome.setToolTipText("");
         tfdNome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tfdNomeActionPerformed(evt);
@@ -93,50 +93,37 @@ public class FormPersonaggio extends javax.swing.JFrame {
         btnNext.setFont(new java.awt.Font("Stencil", 0, 12)); // NOI18N
         btnNext.setForeground(new java.awt.Color(255, 255, 255));
         btnNext.setText("Next");
-        btnNext.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnNext.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnNextActionPerformed(evt);
             }
         });
 
-        btnNome.setBackground(new java.awt.Color(0, 153, 102));
-        btnNome.setFont(new java.awt.Font("Stencil", 0, 12)); // NOI18N
-        btnNome.setForeground(new java.awt.Color(255, 255, 255));
-        btnNome.setText("Conferma");
-        btnNome.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        btnNome.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnNome.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnNomeActionPerformed(evt);
-            }
-        });
+        lblNomeVuoto.setForeground(new java.awt.Color(204, 0, 0));
+        lblNomeVuoto.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblNomeVuoto.setText("per favore, inserisci il nome");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(137, 137, 137)
+                .addComponent(jLabel1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(22, 22, 22)
-                .addComponent(btnCuoco, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnNext, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnMedico, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btnNext, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tfdNome, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(btnCuoco, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(26, 26, 26)
+                        .addComponent(btnMedico, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblNomeVuoto, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
                 .addComponent(btnVeterano, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(137, 137, 137)
-                        .addComponent(jLabel1))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(194, 194, 194)
-                        .addComponent(tfdNome, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(34, 34, 34)
-                        .addComponent(btnNome, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -149,12 +136,12 @@ public class FormPersonaggio extends javax.swing.JFrame {
                     .addComponent(btnVeterano, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnCuoco, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(58, 58, 58)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(tfdNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnNome, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(tfdNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblNomeVuoto)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
                 .addComponent(btnNext, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(53, Short.MAX_VALUE))
+                .addGap(24, 24, 24))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -172,13 +159,14 @@ public class FormPersonaggio extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void tfdNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfdNomeActionPerformed
-        
-    }//GEN-LAST:event_tfdNomeActionPerformed
-
-    private void btnNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNomeActionPerformed
-        nome = tfdNome.getText();
+        if(tfdNome.getText().trim().length() == 0){
+            lblNomeVuoto.setVisible(true);
+        }
+        else{
+            lblNomeVuoto.setVisible(false);
+        }
         check();
-    }//GEN-LAST:event_btnNomeActionPerformed
+    }//GEN-LAST:event_tfdNomeActionPerformed
 
     private void btnCuocoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCuocoActionPerformed
         personaggio = new Cuoco();
@@ -199,43 +187,21 @@ public class FormPersonaggio extends javax.swing.JFrame {
     }//GEN-LAST:event_btnVeteranoActionPerformed
 
     private void btnNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextActionPerformed
+        nome = tfdNome.getText();
+        formGioco = new FormGioco(personaggio, nome);
         formGioco.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_btnNextActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ReflectiveOperationException | javax.swing.UnsupportedLookAndFeelException ex) {
-            logger.log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new FormPersonaggio().setVisible(true));
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCuoco;
     private javax.swing.JButton btnMedico;
     private javax.swing.JButton btnNext;
-    private javax.swing.JButton btnNome;
     private javax.swing.JButton btnVeterano;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel lblNomeVuoto;
     private javax.swing.JTextField tfdNome;
     // End of variables declaration//GEN-END:variables
 }
