@@ -8,16 +8,9 @@ package progetto.gdr;
  *
  * @author lin.elena
  */
-public class Medico extends Personaggio{
-    public Medico(){
-        nMedicine = 1;
-        maxSalute = 120;
-        salute = maxSalute;
-    }
-    
+public class Mare extends Mappa{
     @Override
-    public void abilitaSpecial(){
-        salute = maxSalute;
-        nMedicine++;
+    public void eventoCasuale(){
+        
     }
 }

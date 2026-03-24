@@ -11,14 +11,15 @@ import java.util.Random;
  * @author lin.elena
  */
 public abstract class Mappa {
-    protected String nome;
     protected Personaggio personaggio;
     protected Random random;
     
-    public Mappa(String nome, Personaggio p){
-        this.nome = nome;
-        personaggio = p;
+    public Mappa(){
         random = new Random();
+    }
+    
+    public void setPersonaggio(Personaggio p){
+        personaggio = p;
     }
     
     public void stradaBloccata(){

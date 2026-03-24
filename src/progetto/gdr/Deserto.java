@@ -9,10 +9,6 @@ package progetto.gdr;
  * @author lin.elena
  */
 public class Deserto extends Mappa{
-    public Deserto(String nome, Personaggio p){
-        super(nome, p);
-    }
-    
     public void lupo(){
         int attacoLupo = random.nextInt(30,70);
         if(personaggio.getAttaco() < attacoLupo){

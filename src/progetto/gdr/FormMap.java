@@ -12,7 +12,7 @@ public class FormMap extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(FormMap.class.getName());
     private FormPersonaggio formPersonaggio;
-    private String mapSelected;
+    private Mappa mappa;
     /**
      * Creates new form FormMap
      */
@@ -145,7 +145,7 @@ public class FormMap extends javax.swing.JFrame {
     }//GEN-LAST:event_btnNextActionPerformed
 
     private void btnDesertoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDesertoActionPerformed
-        mapSelected = "deserto";
+        mappa = new Deserto();
         btnNext.setEnabled(true);
     }//GEN-LAST:event_btnDesertoActionPerformed
 

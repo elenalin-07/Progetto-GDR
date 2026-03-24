@@ -9,10 +9,6 @@ package progetto.gdr;
  * @author lin.elena
  */
 public class CittaDistruta extends Mappa{
-    public CittaDistruta(String nome, Personaggio p){
-        super(nome, p);
-    }
-    
     public void nemico(){
         personaggio.danni(random.nextInt(20,30));
     }
