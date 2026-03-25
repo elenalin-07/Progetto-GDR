@@ -15,17 +15,19 @@ public class GameManager {
     private Personaggio personaggio;
     private Random random;
     private Mappa mappa;
+    private String nickname;
     
-    public GameManager(Personaggio p, Mappa m){
+    public GameManager(Personaggio p, Mappa m, String nickname){
         turni = 0;
         personaggio = p;
         random = new Random();
         mappa = m;
+        this.nickname = nickname;
     }
     
     public void esplora(){
         turni++;
-        days = turni/3;
+        days = turni/4;
         mappa.eventoCasuale();
     }
     
@@ -51,5 +53,37 @@ public class GameManager {
     
     public void abilitaSpecial(){
         personaggio.abilitaSpecial();
+    }
+    
+    public int getSalute(){
+        return personaggio.getSalute();
+    }
+    
+    public int getSete(){
+        return personaggio.getSete();
+    }
+    
+    public int getFame(){
+        return personaggio.getFame();
+    }
+    
+    public int getAttaco(){
+        return personaggio.getAttaco();
+    }
+    
+    public int getNAcqua(){
+        return personaggio.getNAcqua();
+    }
+    
+    public int getNCibo(){
+        return personaggio.getNCibo();
+    }
+    
+    public int getNMedicine(){
+        return personaggio.getNMedicine();
+    }
+    
+    public int getMaxSalute(){
+        return personaggio.getMaxSalute();
     }
 }

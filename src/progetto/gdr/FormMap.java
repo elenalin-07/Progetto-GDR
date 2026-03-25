@@ -19,9 +19,7 @@ public class FormMap extends javax.swing.JFrame {
     public FormMap() {
         initComponents();
         
-        mapSelected = null;
         btnNext.setEnabled(false);
-        formPersonaggio = new FormPersonaggio();
     }
 
     /**
@@ -140,6 +138,7 @@ public class FormMap extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextActionPerformed
+        formPersonaggio = new FormPersonaggio(mappa);
         formPersonaggio.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_btnNextActionPerformed
@@ -150,39 +149,18 @@ public class FormMap extends javax.swing.JFrame {
     }//GEN-LAST:event_btnDesertoActionPerformed
 
     private void btnCittaDistrutaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCittaDistrutaActionPerformed
-        mapSelected = "deserto";
+        mappa = new CittaDistruta();
         btnNext.setEnabled(true);
     }//GEN-LAST:event_btnCittaDistrutaActionPerformed
 
     private void btnMareActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMareActionPerformed
-        mapSelected = "mare";
+        mappa = new Mare();
         btnNext.setEnabled(true);
     }//GEN-LAST:event_btnMareActionPerformed
 
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ReflectiveOperationException | javax.swing.UnsupportedLookAndFeelException ex) {
-            logger.log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new FormMap().setVisible(true));
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCittaDistruta;

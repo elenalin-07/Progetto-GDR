@@ -11,20 +11,21 @@ package progetto.gdr;
 public class FormPersonaggio extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(FormPersonaggio.class.getName());
-    private String nome, personaggioSelected;
+    private String nickname, personaggioSelected;
     private Personaggio personaggio;
     private FormGioco formGioco;
+    private GameManager gameManager;
+    private Mappa mappa;
     /**
      * Creates new form FormPersonaggio
      */
-    public FormPersonaggio() {
+    public FormPersonaggio(Mappa mappa) {
         initComponents();
         
         lblNomeVuoto.setVisible(false);
-        personaggioSelected = null;
         btnNext.setEnabled(false);
-        nome = null;
-        
+        nickname = null;
+        this.mappa = mappa;
     }
     
     
@@ -187,8 +188,9 @@ public class FormPersonaggio extends javax.swing.JFrame {
     }//GEN-LAST:event_btnVeteranoActionPerformed
 
     private void btnNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextActionPerformed
-        nome = tfdNome.getText();
-        formGioco = new FormGioco(personaggio, nome);
+        nickname = tfdNome.getText();
+        gameManager = new GameManager(personaggio, mappa, nickname);
+        formGioco = new FormGioco(gameManager);
         formGioco.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_btnNextActionPerformed

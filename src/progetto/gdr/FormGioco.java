@@ -11,29 +11,34 @@ package progetto.gdr;
 public class FormGioco extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(FormGioco.class.getName());
-    private Personaggio personaggio;
     private String nome;
     private GameManager gameManager;
+    private String[] time;
     /**
      * Creates new form FormGioco
      */
-    public FormGioco(Personaggio p, String nome) {
+    public FormGioco(GameManager gm) {
         initComponents();
-        personaggio = p;
         this.nome = nome;
+        gameManager = gm;
         
-        lblAcqua.setText("" + personaggio.getNAcqua());
-        lblCibo.setText("" + personaggio.getNCibo());
-        lblMedicine.setText("" + personaggio.getNMedicine());
-        pgbSalute.setMaximum(personaggio.getMaxSalute());
-        pgbSalute.setValue(personaggio.getSalute());
+        lblAcqua.setText("" + gameManager.getNAcqua());
+        lblCibo.setText("" + gameManager.getNCibo());
+        lblMedicine.setText("" + gameManager.getNMedicine());
+        pgbSalute.setMaximum(gameManager.getMaxSalute());
+        pgbSalute.setValue(gameManager.getSalute());
         pgbSalute.setStringPainted(true);
-        pgbSalute.setString("" + personaggio.getSalute());
-        lblFame.setText("" + personaggio.getFame());
-        lblSete.setText("" + personaggio.getSete());
-        lblAttaco.setText("" + personaggio.getAttaco());
+        pgbSalute.setString("" + gameManager.getSalute());
+        lblFame.setText("" + gameManager.getFame());
+        lblSete.setText("" + gameManager.getSete());
+        lblAttaco.setText("" + gameManager.getAttaco());
         
-        gameManager = new GameManager(personaggio, );
+        time = {"8:00","13:00","17:00","22:00"};
+    }
+    
+    public void esplora(){
+        gameManager.esplora();
+        lblDays.setText("" + gameManager.getDays());
     }
     
     /**
@@ -55,16 +60,16 @@ public class FormGioco extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         btnAcqua = new javax.swing.JButton();
         btnCibo = new javax.swing.JButton();
-        nMedicine = new javax.swing.JButton();
+        btnMedicine = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
         lblAttaco = new javax.swing.JLabel();
         jProgressBar2 = new javax.swing.JProgressBar();
-        jButton4 = new javax.swing.JButton();
+        btnEsplora = new javax.swing.JButton();
         lblCibo = new javax.swing.JLabel();
         lblAcqua = new javax.swing.JLabel();
         lblMedicine = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
+        lblDays = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         btnSalva = new javax.swing.JButton();
         jLabel9 = new javax.swing.JLabel();
@@ -99,6 +104,11 @@ public class FormGioco extends javax.swing.JFrame {
         btnAcqua.setMaximumSize(new java.awt.Dimension(80, 80));
         btnAcqua.setMinimumSize(new java.awt.Dimension(80, 80));
         btnAcqua.setPreferredSize(new java.awt.Dimension(80, 80));
+        btnAcqua.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAcquaActionPerformed(evt);
+            }
+        });
 
         btnCibo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnCibo.setMaximumSize(new java.awt.Dimension(80, 80));
@@ -110,10 +120,15 @@ public class FormGioco extends javax.swing.JFrame {
             }
         });
 
-        nMedicine.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        nMedicine.setMaximumSize(new java.awt.Dimension(80, 80));
-        nMedicine.setMinimumSize(new java.awt.Dimension(80, 80));
-        nMedicine.setPreferredSize(new java.awt.Dimension(80, 80));
+        btnMedicine.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnMedicine.setMaximumSize(new java.awt.Dimension(80, 80));
+        btnMedicine.setMinimumSize(new java.awt.Dimension(80, 80));
+        btnMedicine.setPreferredSize(new java.awt.Dimension(80, 80));
+        btnMedicine.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMedicineActionPerformed(evt);
+            }
+        });
 
         jLabel5.setFont(new java.awt.Font("Stencil", 0, 12)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(0, 102, 102));
@@ -124,14 +139,19 @@ public class FormGioco extends javax.swing.JFrame {
         jProgressBar2.setBackground(new java.awt.Color(242, 237, 215));
         jProgressBar2.setForeground(new java.awt.Color(232, 188, 24));
 
-        jButton4.setBackground(new java.awt.Color(250, 226, 153));
-        jButton4.setFont(new java.awt.Font("Stencil", 0, 18)); // NOI18N
-        jButton4.setText("Esplora");
-        jButton4.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jButton4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton4.setMaximumSize(new java.awt.Dimension(83, 92));
-        jButton4.setMinimumSize(new java.awt.Dimension(83, 92));
-        jButton4.setPreferredSize(new java.awt.Dimension(83, 92));
+        btnEsplora.setBackground(new java.awt.Color(250, 226, 153));
+        btnEsplora.setFont(new java.awt.Font("Stencil", 0, 18)); // NOI18N
+        btnEsplora.setText("Esplora");
+        btnEsplora.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnEsplora.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnEsplora.setMaximumSize(new java.awt.Dimension(83, 92));
+        btnEsplora.setMinimumSize(new java.awt.Dimension(83, 92));
+        btnEsplora.setPreferredSize(new java.awt.Dimension(83, 92));
+        btnEsplora.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEsploraActionPerformed(evt);
+            }
+        });
 
         lblCibo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblCibo.setText("jLabel6");
@@ -146,9 +166,9 @@ public class FormGioco extends javax.swing.JFrame {
         jLabel6.setForeground(new java.awt.Color(51, 0, 102));
         jLabel6.setText("Days:");
 
-        jLabel7.setFont(new java.awt.Font("Stencil", 0, 14)); // NOI18N
-        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel7.setText("1");
+        lblDays.setFont(new java.awt.Font("Stencil", 0, 14)); // NOI18N
+        lblDays.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lblDays.setText("1");
 
         jLabel8.setFont(new java.awt.Font("Stencil", 0, 14)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(0, 153, 102));
@@ -196,11 +216,11 @@ public class FormGioco extends javax.swing.JFrame {
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(jLabel6)
                                         .addGap(18, 18, 18)
-                                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(lblDays, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addGap(97, 97, 97)
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(btnEsplora, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                             .addGroup(jPanel1Layout.createSequentialGroup()
                                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                                     .addComponent(lblCibo, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -211,7 +231,7 @@ public class FormGioco extends javax.swing.JFrame {
                                                     .addComponent(lblAcqua, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
                                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                                    .addComponent(nMedicine, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                    .addComponent(btnMedicine, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                                     .addComponent(lblMedicine, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                                 .addGap(0, 0, Short.MAX_VALUE)
@@ -238,7 +258,7 @@ public class FormGioco extends javax.swing.JFrame {
                     .addComponent(jLabel1)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel6)
-                        .addComponent(jLabel7)))
+                        .addComponent(lblDays)))
                 .addGap(15, 15, 15)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
@@ -254,12 +274,12 @@ public class FormGioco extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel9)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnEsplora, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(40, 40, 40)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnCibo, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnAcqua, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(nMedicine, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(btnMedicine, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(21, 21, 21)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lblCibo)
@@ -292,22 +312,34 @@ public class FormGioco extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCiboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCiboActionPerformed
-        g
+        gameManager.mangia();
     }//GEN-LAST:event_btnCiboActionPerformed
+
+    private void btnEsploraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEsploraActionPerformed
+        
+    }//GEN-LAST:event_btnEsploraActionPerformed
+
+    private void btnAcquaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAcquaActionPerformed
+        gameManager.mangia();
+    }//GEN-LAST:event_btnAcquaActionPerformed
+
+    private void btnMedicineActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMedicineActionPerformed
+        gameManager.cura();
+    }//GEN-LAST:event_btnMedicineActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAcqua;
     private javax.swing.JButton btnCibo;
+    private javax.swing.JButton btnEsplora;
+    private javax.swing.JButton btnMedicine;
     private javax.swing.JButton btnSalva;
-    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
@@ -315,10 +347,10 @@ public class FormGioco extends javax.swing.JFrame {
     private javax.swing.JLabel lblAcqua;
     private javax.swing.JLabel lblAttaco;
     private javax.swing.JLabel lblCibo;
+    private javax.swing.JLabel lblDays;
     private javax.swing.JLabel lblFame;
     private javax.swing.JLabel lblMedicine;
     private javax.swing.JLabel lblSete;
-    private javax.swing.JButton nMedicine;
     private javax.swing.JProgressBar pgbSalute;
     // End of variables declaration//GEN-END:variables
 }
