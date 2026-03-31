@@ -9,11 +9,13 @@ package progetto.gdr;
  * @author lin.elena
  */
 public class Deserto extends Mappa{
-    public void lupo(){
+    public String lupo(){
         int attacoLupo = random.nextInt(30,70);
         if(personaggio.getAttaco() < attacoLupo){
             personaggio.danni(random.nextInt(attacoLupo));
+            return "hai incontrato un lupo hai subito " + attacoLupo + " danni";
         }
+        return "hai incontato un lupo ma lo hai sconfitto";
     }
     
     public void villaggioAbandonato(){
@@ -33,44 +35,44 @@ public class Deserto extends Mappa{
     }
     
     @Override
-    public void eventoCasuale(){
+    public String eventoCasuale(){
         int num = random.nextInt(16);
-        
+        String output = "non successo niente";
         switch(num){
             case 0:
-                cibo();
+                output = cibo();
                 break;
             case 1:
-                acqua();
+                output = acqua();
                 break;
             case 3:
-                medicine();
+                output = medicine();
                 break;
             case 5:
-                caldo();
+                output = caldo();
                 break;
             case 6:
-                cibo();
+                output = cibo();
                 break;
             case 7:
                 caldo();
                 break;
             case 8:
-                acqua();
+                output = acqua();
             case 9:
-                villaggioAbandonato();
+                output = villaggioAbandonato();
                 break;
             case 11:
-                lupo();
+                output = lupo();
                 break;
             case 12:
-                medicine();
+                output = medicine();
                 break;
             case 14:
-                banditi();
+                output = banditi();
                 break;
             case 15:
-                stradaBloccata();
+                output = stradaBloccata();
         }
     }
 }

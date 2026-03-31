@@ -22,12 +22,13 @@ public abstract class Mappa {
         personaggio = p;
     }
     
-    public void stradaBloccata(){
+    public String stradaBloccata(){
         personaggio.aumentaFame(5);
         personaggio.aumentaSete(5);
+        return "la strada che stai andando e' bloccato devi cambia lastrada, ti aumenta la sete e la fame";
     }
             
-    public void cibo(){
+    public String cibo(){
         int num = random.nextInt(100);
         
         if(num < 5){
@@ -39,9 +40,10 @@ public abstract class Mappa {
         else{
             personaggio.addCibo(1);
         }
+        return "hai trovato " + num + " cibo";
     }
     
-    public void acqua(){
+    public String acqua(){
         int num = random.nextInt(100);
         
         if(num < 5){
@@ -53,9 +55,10 @@ public abstract class Mappa {
         else{
             personaggio.addAcqua(1);
         }
+        return "hai trovato " + num + " bottiglia di acqua";
     }
     
-    public void medicine(){
+    public String medicine(){
         int num = random.nextInt(100);
         
         if(num < 5){
@@ -67,25 +70,26 @@ public abstract class Mappa {
         else{
             personaggio.addAcqua(1);
         }
+        return "hai trovato " + num + " medicine";
     }
     
-    public boolean banditi(){
+    public String banditi(){
         int attacoNemico = random.nextInt(40,60);
         if(personaggio.getAttaco() < attacoNemico){
             personaggio.danni(random.nextInt(attacoNemico));
-            return false;
+            return "hai subito " + attacoNemico + " danni";
         }
-        else{
-            cibo();
-            acqua();
-            medicine();
-        }
-        return true;
+        String output = cibo();
+        output += acqua();
+        output += medicine();
+        return """
+               hai sconfitto nemici
+               """ + output;
     }
     
     public void medicante(){
         
     }
     
-    public abstract void eventoCasuale();
+    public abstract String eventoCasuale();
 }

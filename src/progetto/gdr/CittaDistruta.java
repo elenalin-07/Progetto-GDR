@@ -9,69 +9,73 @@ package progetto.gdr;
  * @author lin.elena
  */
 public class CittaDistruta extends Mappa{
-    public void nemico(){
+    public String nemico(){
         personaggio.danni(random.nextInt(20,30));
+        return "hai subito i danni dal nemico";
     }
     
-    public void ospedale(){
-        medicine();
+    public String ospedale(){
+        String output;
+        output = medicine();
         int num = random.nextInt(10);
         if(num < 2){
-            nemico();
+            output += " e " + nemico();
         }
+        return output;
     }
     
-    public void negozio(){
+    public String negozio(){
         int num = random.nextInt(2);
+        String output;
         if(num == 0){
-            medicine();
+           return medicine();
         }
-        else{
-            cibo();
-            acqua();
-        }
+        output = cibo() + " e ";
+        output += acqua();
+        return output;
     }
     
     @Override
-    public void eventoCasuale(){
+    public String eventoCasuale(){
         int num = random.nextInt(16);
-        
+        String output = null;
         switch(num){
             case 0:
-                cibo();
+                output = cibo();
                 break;
             case 1:
-                acqua();
+                output =  acqua();
                 break;
             case 3:
-                medicine();
+                output = medicine();
                 break;
             case 5:
-                negozio();
+                output = negozio();
                 break;
             case 6:
-                cibo();
+                output = cibo();
                 break;
             case 7:
-                negozio();
+                output = negozio();
                 break;
             case 8:
-                acqua();
+                output = acqua();
             case 9:
-                nemico();
+                output = nemico();
                 break;
             case 11:
-                ospedale();
+                output = ospedale();
                 break;
             case 12:
-                medicine();
+                output = medicine();
                 break;
             case 14:
-                banditi();
+                output = banditi();
                 break;
             case 15:
-                stradaBloccata();
+                output = stradaBloccata();
                 break;
         }
+        return output;
     }
 }

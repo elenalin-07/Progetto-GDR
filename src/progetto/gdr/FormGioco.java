@@ -33,7 +33,11 @@ public class FormGioco extends javax.swing.JFrame {
         lblSete.setText("" + gameManager.getSete());
         lblAttaco.setText("" + gameManager.getAttaco());
         
-        time = {"8:00","13:00","17:00","22:00"};
+        time = new String[4];
+        time[0] = "8:00";
+        time[1] = "13:00";
+        time[2] = "17:00";
+        time[3] = "22:00";
     }
     
     public void esplora(){
