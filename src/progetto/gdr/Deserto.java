@@ -18,20 +18,23 @@ public class Deserto extends Mappa{
         return "hai incontato un lupo ma lo hai sconfitto";
     }
     
-    public void villaggioAbandonato(){
+    public String villaggioAbandonato(){
+        String output = "hai trovato un villaggio abandonato";
         int num = random.nextInt(2);
         if(num == 0){
-            cibo();
-            acqua();
-            medicine();
+            output += cibo() + ", ";
+            output += acqua() + " e ";
+            output += medicine();
+            return output;
         }
-        else{
-            personaggio.danni(random.nextInt(5, 20));
-        }
+        int danni = random.nextInt(5, 20);
+        personaggio.danni(danni);
+        return output + "hai subito " + danni + " danni";
     }
     
-    public void caldo(){
+    public String caldo(){
         personaggio.aumentaSete(8);
+        return "la temperature è aum aumentata";
     }
     
     @Override
@@ -74,5 +77,6 @@ public class Deserto extends Mappa{
             case 15:
                 output = stradaBloccata();
         }
+        return output;
     }
 }

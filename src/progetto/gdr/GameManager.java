@@ -11,11 +11,12 @@ import java.util.Random;
  * @author lin.elena
  */
 public class GameManager {
-    private int turni, days;
+    private int turni, days, click;
     private Personaggio personaggio;
     private Random random;
     private Mappa mappa;
-    private String nickname;
+    private String nickname, time;
+    private String[] times;
     
     public GameManager(Personaggio p, Mappa m, String nickname){
         turni = 0;
@@ -23,10 +24,25 @@ public class GameManager {
         random = new Random();
         mappa = m;
         this.nickname = nickname;
+        times = new String[4];
+        click = 0;
+    }
+    
+    public void setTime(String[] t){
+        times = t;
+        time = times[click];
+    }
+    
+    public String getTime(){
+        return time;
     }
     
     public void esplora(){
         turni++;
+        if(click++ == 4){
+            click = 0;
+        }
+        time = times[click];
         days = turni/4;
         mappa.eventoCasuale();
     }
