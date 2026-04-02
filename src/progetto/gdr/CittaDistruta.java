@@ -10,13 +10,14 @@ package progetto.gdr;
  */
 public class CittaDistruta extends Mappa{
     public String nemico(){
-        personaggio.danni(random.nextInt(20,30));
-        return "hai subito i danni dal nemico";
+        int danni = random.nextInt(20, 30);
+        personaggio.danni(random.nextInt(danni));
+        return "hai subito " + danni + " danni dal nemico";
     }
     
     public String ospedale(){
         String output;
-        output = medicine();
+        output = "Hai trovato un ospedale\n" + medicine();
         int num = random.nextInt(10);
         if(num < 2){
             output += " e " + nemico();
@@ -26,7 +27,7 @@ public class CittaDistruta extends Mappa{
     
     public String negozio(){
         int num = random.nextInt(2);
-        String output;
+        String output = "Hai trovato un negozio\n";
         if(num == 0){
            return medicine();
         }
@@ -38,12 +39,12 @@ public class CittaDistruta extends Mappa{
     @Override
     public String eventoCasuale(){
         int num = random.nextInt(16);
-        String output = null;
+        String output = "Non suuccesso niente";
         switch(num){
             case 0:
                 output = cibo();
                 break;
-            case 1:
+            case 2:
                 output =  acqua();
                 break;
             case 3:
@@ -60,13 +61,14 @@ public class CittaDistruta extends Mappa{
                 break;
             case 8:
                 output = acqua();
+                break;
             case 9:
                 output = nemico();
                 break;
             case 11:
                 output = ospedale();
                 break;
-            case 12:
+            case 13:
                 output = medicine();
                 break;
             case 14:

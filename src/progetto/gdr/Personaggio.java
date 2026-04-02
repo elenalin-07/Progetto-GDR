@@ -128,4 +128,10 @@ public abstract class Personaggio {
     public void aumentaFame(int num){
         fame += num;
     }
+    
+    public void azzeramento(){
+        nCibo = 0;
+        nAcqua = 0;
+        nMedicine = 0;
+    }
 }

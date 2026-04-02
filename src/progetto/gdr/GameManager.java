@@ -37,14 +37,15 @@ public class GameManager {
         return time;
     }
     
-    public void esplora(){
+    public String esplora(){
         turni++;
-        if(click++ == 4){
+        click++;
+        if(click > 3){
             click = 0;
         }
         time = times[click];
         days = turni/4;
-        mappa.eventoCasuale();
+        return mappa.eventoCasuale();
     }
     
     public int getTurni(){
@@ -101,5 +102,13 @@ public class GameManager {
     
     public int getMaxSalute(){
         return personaggio.getMaxSalute();
+    }
+    
+    public Mappa getMappa(){
+        return mappa;
+    }
+
+    public Personaggio getPersonaggio() {
+        return personaggio;
     }
 }

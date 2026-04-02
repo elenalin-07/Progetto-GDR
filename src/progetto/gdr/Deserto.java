@@ -12,7 +12,8 @@ public class Deserto extends Mappa{
     public String lupo(){
         int attacoLupo = random.nextInt(30,70);
         if(personaggio.getAttaco() < attacoLupo){
-            personaggio.danni(random.nextInt(attacoLupo));
+            int danni = random.nextInt(30, 40);
+            personaggio.danni(random.nextInt(danni));
             return "hai incontrato un lupo hai subito " + attacoLupo + " danni";
         }
         return "hai incontato un lupo ma lo hai sconfitto";
@@ -40,7 +41,7 @@ public class Deserto extends Mappa{
     @Override
     public String eventoCasuale(){
         int num = random.nextInt(16);
-        String output = "non successo niente";
+        String output = "Non successo niente";
         switch(num){
             case 0:
                 output = cibo();
@@ -58,10 +59,11 @@ public class Deserto extends Mappa{
                 output = cibo();
                 break;
             case 7:
-                caldo();
+                output = caldo();
                 break;
             case 8:
                 output = acqua();
+                break;
             case 9:
                 output = villaggioAbandonato();
                 break;

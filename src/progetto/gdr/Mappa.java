@@ -30,47 +30,58 @@ public abstract class Mappa {
             
     public String cibo(){
         int num = random.nextInt(100);
-        
+        int cibo;
         if(num < 5){
             personaggio.addCibo(3);
+            cibo = 3;
         }
         else if(num < 20){
             personaggio.addCibo(2);
+            cibo = 2;
         }
         else{
             personaggio.addCibo(1);
+            cibo = 1;
         }
-        return "hai trovato " + num + " cibo";
+        return "hai trovato " + cibo + " cibo";
     }
     
     public String acqua(){
         int num = random.nextInt(100);
+        int acqua;
         
         if(num < 5){
             personaggio.addAcqua(3);
+            acqua = 3;
         }
         else if(num < 20){
             personaggio.addAcqua(2);
+            acqua = 2;
         }
         else{
             personaggio.addAcqua(1);
+            acqua = 1;
         }
-        return "hai trovato " + num + " bottiglia di acqua";
+        return "hai trovato " + acqua + " bottiglia di acqua";
     }
     
     public String medicine(){
         int num = random.nextInt(100);
+        int medicine;
         
         if(num < 5){
             personaggio.addAcqua(3);
+            medicine = 3;
         }
         else if(num < 20){
             personaggio.addAcqua(2);
+            medicine = 2;
         }
         else{
             personaggio.addAcqua(1);
+            medicine = 1;
         }
-        return "hai trovato " + num + " medicine";
+        return "hai trovato " + medicine + " medicine";
     }
     
     public String banditi(){
@@ -85,10 +96,6 @@ public abstract class Mappa {
         return """
                hai sconfitto nemici
                """ + output;
-    }
-    
-    public void medicante(){
-        
     }
     
     public abstract String eventoCasuale();
