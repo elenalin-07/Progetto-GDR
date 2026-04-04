@@ -68,11 +68,19 @@ public abstract class Personaggio {
         nCibo += num;
     }
     
+    public void addMedicine(int num){
+        nMedicine += num;
+    }
+    
     public boolean bere(){
         nAcqua--;
         if(nAcqua < 0){
             nAcqua = 0;
             return false;
+        }
+        sete -= 10;
+        if(sete <0 ){
+            sete = 0;
         }
         return true;
     }
@@ -83,6 +91,10 @@ public abstract class Personaggio {
             nCibo = 0;
             return false;
         }
+        fame -= 10;
+        if(fame <0 ){
+            fame = 0;
+        }
         return true;
     }
     
@@ -91,6 +103,10 @@ public abstract class Personaggio {
         if(nMedicine < 0){
             nMedicine = 0;
             return false;
+        }
+        salute += 10;
+        if(salute > maxSalute){
+            fame = maxSalute;
         }
         return true;
     }

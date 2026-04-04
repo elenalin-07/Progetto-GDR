@@ -4,6 +4,8 @@
  */
 package progetto.gdr;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author lin.elena
@@ -24,16 +26,7 @@ public class FormGioco extends javax.swing.JFrame {
         gameManager = gm;
         gameManager.getMappa().setPersonaggio(gameManager.getPersonaggio());
         
-        lblAcqua.setText("" + gameManager.getNAcqua());
-        lblCibo.setText("" + gameManager.getNCibo());
-        lblMedicine.setText("" + gameManager.getNMedicine());
-        pgbSalute.setMaximum(gameManager.getMaxSalute());
-        pgbSalute.setValue(gameManager.getSalute());
-        pgbSalute.setStringPainted(true);
-        pgbSalute.setString("" + gameManager.getSalute());
-        lblFame.setText("" + gameManager.getFame());
-        lblSete.setText("" + gameManager.getSete());
-        lblAttaco.setText("" + gameManager.getAttaco());
+        setDati();
         
         time = new String[4];
         time[0] = "8:00";
@@ -45,9 +38,25 @@ public class FormGioco extends javax.swing.JFrame {
         lblTime.setText(gameManager.getTime());
     }
     
-    public void esplora(){
-        gameManager.esplora();
+    public String esplora(){
+        String output = gameManager.esplora();
+        setDati();
+        return output;
+    }
+    
+    public void setDati(){
+        lblAcqua.setText("" + gameManager.getNAcqua());
+        lblCibo.setText("" + gameManager.getNCibo());
+        lblMedicine.setText("" + gameManager.getNMedicine());
+        pgbSalute.setMaximum(gameManager.getMaxSalute());
+        pgbSalute.setValue(gameManager.getSalute());
+        pgbSalute.setStringPainted(true);
+        pgbSalute.setString("" + gameManager.getSalute());
+        lblFame.setText("" + gameManager.getFame());
+        lblSete.setText("" + gameManager.getSete());
+        lblAttaco.setText("" + gameManager.getAttaco());
         lblDays.setText("" + gameManager.getDays());
+        lblTime.setText(gameManager.getTime());
     }
     
     /**
@@ -339,18 +348,25 @@ public class FormGioco extends javax.swing.JFrame {
 
     private void btnCiboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCiboActionPerformed
         gameManager.mangia();
+        setDati();
     }//GEN-LAST:event_btnCiboActionPerformed
 
     private void btnEsploraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEsploraActionPerformed
-        ttaEvento.append(gameManager.esplora() + "\n");
+        ttaEvento.append(esplora() + "\n");
+        if(!gameManager.check()){
+            JOptionPane.showMessageDialog(null, "Sei Morto!", "Fallimento", JOptionPane.INFORMATION_MESSAGE);
+            btnEsplora.setEnabled(false);
+        }
     }//GEN-LAST:event_btnEsploraActionPerformed
 
     private void btnAcquaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAcquaActionPerformed
-        gameManager.mangia();
+        gameManager.bere();
+        setDati();
     }//GEN-LAST:event_btnAcquaActionPerformed
 
     private void btnMedicineActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMedicineActionPerformed
         gameManager.cura();
+        setDati();
     }//GEN-LAST:event_btnMedicineActionPerformed
 
 

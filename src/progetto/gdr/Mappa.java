@@ -70,15 +70,15 @@ public abstract class Mappa {
         int medicine;
         
         if(num < 5){
-            personaggio.addAcqua(3);
+            personaggio.addMedicine(3);
             medicine = 3;
         }
         else if(num < 20){
-            personaggio.addAcqua(2);
+            personaggio.addMedicine(2);
             medicine = 2;
         }
         else{
-            personaggio.addAcqua(1);
+            personaggio.addMedicine(1);
             medicine = 1;
         }
         return "hai trovato " + medicine + " medicine";

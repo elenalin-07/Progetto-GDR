@@ -26,6 +26,7 @@ public class GameManager {
         this.nickname = nickname;
         times = new String[4];
         click = 0;
+        days = 1;
     }
     
     public void setTime(String[] t){
@@ -44,8 +45,17 @@ public class GameManager {
             click = 0;
         }
         time = times[click];
-        days = turni/4;
+        if(turni/4 != 0) days = turni/4;
+        personaggio.fame++;
+        personaggio.sete++;
         return mappa.eventoCasuale();
+    }
+    
+    public boolean check(){
+        if(personaggio.getSalute() <= 0){
+            return false;
+        }
+        return true;
     }
     
     public int getTurni(){
