@@ -9,6 +9,10 @@ package progetto.gdr;
  * @author lin.elena
  */
 public class Deserto extends Mappa{
+    public Deserto() {
+        nome = "deserto";
+    }
+    
     public String lupo(){
         int attacoLupo = random.nextInt(30,70);
         if(personaggio.getAttaco() < attacoLupo){

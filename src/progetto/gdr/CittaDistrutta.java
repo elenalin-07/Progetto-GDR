@@ -8,7 +8,10 @@ package progetto.gdr;
  *
  * @author lin.elena
  */
-public class CittaDistruta extends Mappa{
+public class CittaDistrutta extends Mappa{
+    public CittaDistrutta() {
+        nome = "cittaDistrutta";
+    }
     public String nemico(){
         int danni = random.nextInt(20, 30);
         personaggio.danni(random.nextInt(danni));

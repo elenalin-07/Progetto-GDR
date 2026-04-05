@@ -13,9 +13,14 @@ import java.util.Random;
 public abstract class Mappa {
     protected Personaggio personaggio;
     protected Random random;
+    protected String nome;
     
     public Mappa(){
         random = new Random();
+    }
+    
+    public String getNome(){
+        return nome;
     }
     
     public void setPersonaggio(Personaggio p){

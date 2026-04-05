@@ -59,7 +59,7 @@
                               <Group type="102" attributes="0">
                                   <Component id="btnDeserto" min="-2" pref="200" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="btnCittaDistruta" min="-2" pref="200" max="-2" attributes="0"/>
+                                  <Component id="btnCittaDistrutta" min="-2" pref="200" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Component id="btnMare" min="-2" pref="200" max="-2" attributes="0"/>
                               </Group>
@@ -84,7 +84,7 @@
                       <Component id="btnMare" alignment="0" min="-2" pref="200" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="btnDeserto" alignment="3" min="-2" pref="200" max="-2" attributes="0"/>
-                          <Component id="btnCittaDistruta" alignment="3" min="-2" pref="200" max="-2" attributes="0"/>
+                          <Component id="btnCittaDistrutta" alignment="3" min="-2" pref="200" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace pref="41" max="32767" attributes="0"/>
@@ -154,14 +154,14 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnMareActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="btnCittaDistruta">
+        <Component class="javax.swing.JButton" name="btnCittaDistrutta">
           <Properties>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
               <Color id="Cursore mano"/>
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCittaDistrutaActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCittaDistruttaActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="lblDescrizione">

@@ -4,6 +4,7 @@
  */
 package progetto.gdr;
 
+import java.io.IOException;
 import java.util.Random;
 
 /**
@@ -46,8 +47,16 @@ public class GameManager {
         }
         time = times[click];
         if(turni/4 != 0) days = turni/4;
-        personaggio.fame++;
-        personaggio.sete++;
+        
+        if(personaggio.fame <= 50) personaggio.fame++;
+        if(personaggio.sete <= 50) personaggio.sete++;
+        
+        if(personaggio.fame >= 30){
+            personaggio.salute -= personaggio.fame/10;
+        }
+        if(personaggio.sete >= 30){
+            personaggio.salute -= personaggio.sete/10;
+        }
         return mappa.eventoCasuale();
     }
     
@@ -120,5 +129,22 @@ public class GameManager {
 
     public Personaggio getPersonaggio() {
         return personaggio;
+    }
+    
+    public String getDati(){
+        return turni + "," + days + "," + click + "," + mappa.getNome() + "," + nickname + "," + time + "," + personaggio.getDati();
+    }
+    
+    public void salvaCSV(String path) throws IOException{
+        FileManager.writeCSV(path, getDati());
+    }
+    
+    public void setDati(int turni, int days, int click,String nickname, String time){
+        this.turni = turni;
+        this.days = days;
+        System.out.println(days +"/" + time);
+        this.click = click;
+        this.nickname = nickname;
+        this.time = time;
     }
 }

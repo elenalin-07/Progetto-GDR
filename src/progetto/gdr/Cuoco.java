@@ -10,6 +10,7 @@ package progetto.gdr;
  */
 public class Cuoco extends Personaggio{
     public Cuoco(){
+        nome = "cuoco";
         nAcqua = 2;
         nCibo = 2;
     }

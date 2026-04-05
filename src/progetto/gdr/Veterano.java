@@ -10,6 +10,7 @@ package progetto.gdr;
  */
 public class Veterano extends Personaggio{
     public Veterano(){
+        nome = "veterano";
         attaco = 60;
     }
     

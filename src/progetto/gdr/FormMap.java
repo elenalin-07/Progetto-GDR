@@ -36,7 +36,7 @@ public class FormMap extends javax.swing.JFrame {
         btnNext = new javax.swing.JButton();
         btnDeserto = new javax.swing.JButton();
         btnMare = new javax.swing.JButton();
-        btnCittaDistruta = new javax.swing.JButton();
+        btnCittaDistrutta = new javax.swing.JButton();
         lblDescrizione = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -53,6 +53,7 @@ public class FormMap extends javax.swing.JFrame {
         btnNext.setFont(new java.awt.Font("Stencil", 0, 12)); // NOI18N
         btnNext.setForeground(new java.awt.Color(255, 255, 255));
         btnNext.setText("Next");
+        btnNext.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnNext.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnNext.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -74,10 +75,10 @@ public class FormMap extends javax.swing.JFrame {
             }
         });
 
-        btnCittaDistruta.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnCittaDistruta.addActionListener(new java.awt.event.ActionListener() {
+        btnCittaDistrutta.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnCittaDistrutta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCittaDistrutaActionPerformed(evt);
+                btnCittaDistruttaActionPerformed(evt);
             }
         });
 
@@ -97,7 +98,7 @@ public class FormMap extends javax.swing.JFrame {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(btnDeserto, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(btnCittaDistruta, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btnCittaDistrutta, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(btnMare, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -115,7 +116,7 @@ public class FormMap extends javax.swing.JFrame {
                     .addComponent(btnMare, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(btnDeserto, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btnCittaDistruta, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btnCittaDistrutta, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
                 .addComponent(lblDescrizione, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -148,10 +149,10 @@ public class FormMap extends javax.swing.JFrame {
         btnNext.setEnabled(true);
     }//GEN-LAST:event_btnDesertoActionPerformed
 
-    private void btnCittaDistrutaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCittaDistrutaActionPerformed
-        mappa = new CittaDistruta();
+    private void btnCittaDistruttaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCittaDistruttaActionPerformed
+        mappa = new CittaDistrutta();
         btnNext.setEnabled(true);
-    }//GEN-LAST:event_btnCittaDistrutaActionPerformed
+    }//GEN-LAST:event_btnCittaDistruttaActionPerformed
 
     private void btnMareActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMareActionPerformed
         mappa = new Mare();
@@ -163,7 +164,7 @@ public class FormMap extends javax.swing.JFrame {
      */
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnCittaDistruta;
+    private javax.swing.JButton btnCittaDistrutta;
     private javax.swing.JButton btnDeserto;
     private javax.swing.JButton btnMare;
     private javax.swing.JButton btnNext;

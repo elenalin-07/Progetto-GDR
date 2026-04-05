@@ -4,6 +4,9 @@
  */
 package progetto.gdr;
 
+import java.io.IOException;
+import java.util.ArrayList;
+
 /**
  *
  * @author lin.elena
@@ -12,6 +15,8 @@ public class FormMenu extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(FormMenu.class.getName());
     private FormMap formMap;
+    private FormGioco formGioco;
+    private GameManager gm;
     /**
      * Creates new form FormMenu
      */
@@ -21,6 +26,39 @@ public class FormMenu extends javax.swing.JFrame {
         formMap = new FormMap();
     }
 
+    public Personaggio setPersonaggio(String[] d){
+        Personaggio p;
+        ArrayList<Integer> dati = new ArrayList<>();
+        for(int i = 7; i < d.length; i++){
+            dati.add(Integer.parseInt(d[i]));
+        }
+        if(d[6].equals("cuoco")){
+            p = new Cuoco();
+        }
+        else if(d[6].equals("medico")){
+            p = new Medico();
+        }
+        else{
+            p = new Veterano();
+        }
+        
+        p.setDati(dati.get(0), dati.get(1), dati.get(2), dati.get(3), dati.get(4),dati.get(5), dati.get(6), dati.get(7));
+        return p;
+    }
+    
+    public Mappa setMappa(String[] d){
+        Mappa m;
+        if(d[3].equals("Deserto")){
+            m = new Deserto();
+        }
+        else if(d[3].equals("cittaDistrutta")){
+            m = new CittaDistrutta();
+        }
+        else{
+            m = new Mare();
+        }
+        return m;
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -32,10 +70,10 @@ public class FormMenu extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btnStart = new javax.swing.JButton();
+        btnClassifica = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
+        btnContinua = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -46,22 +84,22 @@ public class FormMenu extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(153, 0, 0));
         jLabel1.setText("SURVIVAL");
 
-        jButton1.setBackground(new java.awt.Color(204, 255, 255));
-        jButton1.setFont(new java.awt.Font("Stencil", 0, 12)); // NOI18N
-        jButton1.setText("START");
-        jButton1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jButton1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnStart.setBackground(new java.awt.Color(204, 255, 255));
+        btnStart.setFont(new java.awt.Font("Stencil", 0, 12)); // NOI18N
+        btnStart.setText("START");
+        btnStart.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnStart.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnStart.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnStartActionPerformed(evt);
             }
         });
 
-        jButton2.setBackground(new java.awt.Color(255, 204, 204));
-        jButton2.setFont(new java.awt.Font("Stencil", 0, 12)); // NOI18N
-        jButton2.setText("CLASSIFICA");
-        jButton2.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jButton2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnClassifica.setBackground(new java.awt.Color(255, 204, 204));
+        btnClassifica.setFont(new java.awt.Font("Stencil", 0, 12)); // NOI18N
+        btnClassifica.setText("CLASSIFICA");
+        btnClassifica.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnClassifica.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         jButton3.setBackground(new java.awt.Color(204, 204, 255));
         jButton3.setFont(new java.awt.Font("Stencil", 0, 12)); // NOI18N
@@ -70,11 +108,16 @@ public class FormMenu extends javax.swing.JFrame {
         jButton3.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButton3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
-        jButton5.setBackground(new java.awt.Color(204, 255, 204));
-        jButton5.setFont(new java.awt.Font("Stencil", 0, 12)); // NOI18N
-        jButton5.setText("CONTINUA");
-        jButton5.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jButton5.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnContinua.setBackground(new java.awt.Color(204, 255, 204));
+        btnContinua.setFont(new java.awt.Font("Stencil", 0, 12)); // NOI18N
+        btnContinua.setText("CONTINUA");
+        btnContinua.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnContinua.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnContinua.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnContinuaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -89,9 +132,9 @@ public class FormMenu extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(111, 111, 111)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(btnStart, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnContinua, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnClassifica, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(81, 81, 81)
                         .addComponent(jLabel1)))
@@ -103,19 +146,19 @@ public class FormMenu extends javax.swing.JFrame {
                 .addGap(77, 77, 77)
                 .addComponent(jLabel1)
                 .addGap(75, 75, 75)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnStart, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 57, Short.MAX_VALUE)
-                .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnContinua, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(52, 52, 52)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnClassifica, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(102, 102, 102)
                 .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(15, 15, 15))
         );
 
-        jButton2.getAccessibleContext().setAccessibleName("");
+        btnClassifica.getAccessibleContext().setAccessibleName("");
         jButton3.getAccessibleContext().setAccessibleName("");
-        jButton5.getAccessibleContext().setAccessibleName("");
+        btnContinua.getAccessibleContext().setAccessibleName("");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -131,10 +174,27 @@ public class FormMenu extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnStartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStartActionPerformed
         formMap.setVisible(true);
         this.setVisible(false);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnStartActionPerformed
+
+    private void btnContinuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnContinuaActionPerformed
+        String dati = null;
+        try {
+            dati = FileManager.readCSV("dati.csv");
+        } catch (IOException ex) {
+            System.getLogger(FormMenu.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);
+        }
+        if(dati.trim().length() > 0){
+            String[] d = dati.split(",");
+            gm = new GameManager(setPersonaggio(d), setMappa(d), d[4]);
+            gm.setDati(Integer.parseInt(d[0]), Integer.parseInt(d[1]), Integer.parseInt(d[2]), d[4], d[5]);
+            formGioco = new FormGioco(gm);
+            formGioco.setVisible(true);
+            this.setVisible(false);
+        }
+    }//GEN-LAST:event_btnContinuaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -162,10 +222,10 @@ public class FormMenu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton btnClassifica;
+    private javax.swing.JButton btnContinua;
+    private javax.swing.JButton btnStart;
     private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables

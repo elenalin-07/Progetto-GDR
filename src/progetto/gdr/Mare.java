@@ -9,6 +9,10 @@ package progetto.gdr;
  * @author lin.elena
  */
 public class Mare extends Mappa{
+    public Mare() {
+        nome = "mare";
+    }
+    
     public String pirati(){
         String output = "Hai incontrato dei pirati";
         int attacoPirate = random.nextInt(50, 70);

@@ -76,7 +76,7 @@
                                   <Component id="lblSete" min="-2" pref="30" max="-2" attributes="0"/>
                               </Group>
                               <Component id="jLabel4" pref="557" max="32767" attributes="0"/>
-                              <Component id="jProgressBar2" alignment="0" max="32767" attributes="0"/>
+                              <Component id="pgbMappa" alignment="0" max="32767" attributes="0"/>
                           </Group>
                           <Group type="103" groupAlignment="1" attributes="0">
                               <Group type="102" alignment="1" attributes="0">
@@ -184,7 +184,7 @@
                       <Group type="102" attributes="0">
                           <Component id="jLabel4" min="-2" pref="433" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="jProgressBar2" min="-2" pref="16" max="-2" attributes="0"/>
+                          <Component id="pgbMappa" min="-2" pref="16" max="-2" attributes="0"/>
                           <EmptySpace pref="31" max="32767" attributes="0"/>
                       </Group>
                   </Group>
@@ -329,7 +329,7 @@
             <Property name="text" type="java.lang.String" value="0"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JProgressBar" name="jProgressBar2">
+        <Component class="javax.swing.JProgressBar" name="pgbMappa">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="d7" green="ed" red="f2" type="rgb"/>
@@ -441,6 +441,9 @@
               <Color id="Cursore mano"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSalvaActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="lblTime">
           <Properties>
