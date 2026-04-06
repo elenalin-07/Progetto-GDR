@@ -4,13 +4,14 @@
  */
 package progetto.gdr;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  *
  * @author lin.elena
  */
-public abstract class Personaggio {
+public abstract class Personaggio implements Serializable{
     protected int salute, sete, fame, attaco, nAcqua, nCibo, nMedicine, maxSalute;
     protected String nome;
     

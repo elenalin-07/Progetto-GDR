@@ -4,6 +4,7 @@
  */
 package progetto.gdr;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -17,47 +18,16 @@ public class FormMenu extends javax.swing.JFrame {
     private FormMap formMap;
     private FormGioco formGioco;
     private GameManager gm;
+    private FormSalvataggio fs;
     /**
      * Creates new form FormMenu
      */
-    public FormMenu() {
+    public FormMenu() throws IOException, FileNotFoundException, ClassNotFoundException {
         initComponents();
         
-        formMap = new FormMap();
-    }
-
-    public Personaggio setPersonaggio(String[] d){
-        Personaggio p;
-        ArrayList<Integer> dati = new ArrayList<>();
-        for(int i = 7; i < d.length; i++){
-            dati.add(Integer.parseInt(d[i]));
-        }
-        if(d[6].equals("cuoco")){
-            p = new Cuoco();
-        }
-        else if(d[6].equals("medico")){
-            p = new Medico();
-        }
-        else{
-            p = new Veterano();
-        }
+        fs = new FormSalvataggio();
+        formMap = new FormMap(fs);
         
-        p.setDati(dati.get(0), dati.get(1), dati.get(2), dati.get(3), dati.get(4),dati.get(5), dati.get(6), dati.get(7));
-        return p;
-    }
-    
-    public Mappa setMappa(String[] d){
-        Mappa m;
-        if(d[3].equals("Deserto")){
-            m = new Deserto();
-        }
-        else if(d[3].equals("cittaDistrutta")){
-            m = new CittaDistrutta();
-        }
-        else{
-            m = new Mare();
-        }
-        return m;
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -76,8 +46,10 @@ public class FormMenu extends javax.swing.JFrame {
         btnContinua = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(400, 600));
 
         jPanel1.setBackground(new java.awt.Color(243, 243, 209));
+        jPanel1.setMinimumSize(new java.awt.Dimension(400, 600));
         jPanel1.setPreferredSize(new java.awt.Dimension(400, 600));
 
         jLabel1.setFont(new java.awt.Font("Stencil", 0, 48)); // NOI18N
@@ -89,6 +61,7 @@ public class FormMenu extends javax.swing.JFrame {
         btnStart.setText("START");
         btnStart.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnStart.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnStart.setPreferredSize(new java.awt.Dimension(160, 50));
         btnStart.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnStartActionPerformed(evt);
@@ -100,19 +73,21 @@ public class FormMenu extends javax.swing.JFrame {
         btnClassifica.setText("CLASSIFICA");
         btnClassifica.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnClassifica.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnClassifica.setPreferredSize(new java.awt.Dimension(160, 50));
 
         jButton3.setBackground(new java.awt.Color(204, 204, 255));
         jButton3.setFont(new java.awt.Font("Stencil", 0, 12)); // NOI18N
-        jButton3.setForeground(new java.awt.Color(102, 0, 153));
         jButton3.setText("ISTRUZIONE");
         jButton3.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButton3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton3.setPreferredSize(new java.awt.Dimension(160, 50));
 
         btnContinua.setBackground(new java.awt.Color(204, 255, 204));
         btnContinua.setFont(new java.awt.Font("Stencil", 0, 12)); // NOI18N
         btnContinua.setText("CONTINUA");
         btnContinua.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnContinua.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnContinua.setPreferredSize(new java.awt.Dimension(160, 50));
         btnContinua.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnContinuaActionPerformed(evt);
@@ -123,37 +98,34 @@ public class FormMenu extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(17, 17, 17))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(111, 111, 111)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnStart, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnContinua, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnClassifica, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(87, 87, 87)
+                        .addComponent(jLabel1))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(81, 81, 81)
-                        .addComponent(jLabel1)))
-                .addContainerGap(93, Short.MAX_VALUE))
+                        .addGap(120, 120, 120)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnStart, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnContinua, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnClassifica, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(87, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(77, 77, 77)
                 .addComponent(jLabel1)
-                .addGap(75, 75, 75)
-                .addComponent(btnStart, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 57, Short.MAX_VALUE)
-                .addComponent(btnContinua, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(52, 52, 52)
-                .addComponent(btnClassifica, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(102, 102, 102)
-                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(15, 15, 15))
+                .addGap(68, 68, 68)
+                .addComponent(btnStart, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(40, 40, 40)
+                .addComponent(btnContinua, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(40, 40, 40)
+                .addComponent(btnClassifica, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(40, 40, 40)
+                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(86, Short.MAX_VALUE))
         );
 
         btnClassifica.getAccessibleContext().setAccessibleName("");
@@ -168,7 +140,7 @@ public class FormMenu extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 597, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -180,46 +152,11 @@ public class FormMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_btnStartActionPerformed
 
     private void btnContinuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnContinuaActionPerformed
-        String dati = null;
-        try {
-            dati = FileManager.readCSV("dati.csv");
-        } catch (IOException ex) {
-            System.getLogger(FormMenu.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);
-        }
-        if(dati.trim().length() > 0){
-            String[] d = dati.split(",");
-            gm = new GameManager(setPersonaggio(d), setMappa(d), d[4]);
-            gm.setDati(Integer.parseInt(d[0]), Integer.parseInt(d[1]), Integer.parseInt(d[2]), d[4], d[5]);
-            formGioco = new FormGioco(gm);
-            formGioco.setVisible(true);
-            this.setVisible(false);
-        }
+        this.setVisible(false);
+        fs.setWrite(false);
+        fs.setVisible(true);
     }//GEN-LAST:event_btnContinuaActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ReflectiveOperationException | javax.swing.UnsupportedLookAndFeelException ex) {
-            logger.log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new FormMenu().setVisible(true));
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnClassifica;

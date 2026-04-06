@@ -5,13 +5,14 @@
 package progetto.gdr;
 
 import java.io.IOException;
+import java.io.Serializable;
 import java.util.Random;
 
 /**
  *
  * @author lin.elena
  */
-public class GameManager {
+public class GameManager implements Serializable{
     private int turni, days, click;
     private Personaggio personaggio;
     private Random random;
@@ -131,6 +132,10 @@ public class GameManager {
         return personaggio;
     }
     
+    public String getNickname(){
+        return nickname;
+    }
+    
     public String getDati(){
         return turni + "," + days + "," + click + "," + mappa.getNome() + "," + nickname + "," + time + "," + personaggio.getDati();
     }
@@ -139,10 +144,13 @@ public class GameManager {
         FileManager.writeCSV(path, getDati());
     }
     
+    public void serializza(String path) throws IOException{
+        FileManager.serializza(path, this);
+    }
+    
     public void setDati(int turni, int days, int click,String nickname, String time){
         this.turni = turni;
         this.days = days;
-        System.out.println(days +"/" + time);
         this.click = click;
         this.nickname = nickname;
         this.time = time;

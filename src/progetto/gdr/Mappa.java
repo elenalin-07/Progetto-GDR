@@ -4,13 +4,14 @@
  */
 package progetto.gdr;
 
+import java.io.Serializable;
 import java.util.Random;
 
 /**
  *
  * @author lin.elena
  */
-public abstract class Mappa {
+public abstract class Mappa implements Serializable{
     protected Personaggio personaggio;
     protected Random random;
     protected String nome;

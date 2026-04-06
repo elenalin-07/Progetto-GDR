@@ -16,16 +16,18 @@ public class FormPersonaggio extends javax.swing.JFrame {
     private FormGioco formGioco;
     private GameManager gameManager;
     private Mappa mappa;
+    private FormSalvataggio fs;
     /**
      * Creates new form FormPersonaggio
      */
-    public FormPersonaggio(Mappa mappa) {
+    public FormPersonaggio(Mappa mappa, FormSalvataggio fs) {
         initComponents();
         
         lblNomeVuoto.setVisible(false);
         btnNext.setEnabled(false);
         nickname = null;
         this.mappa = mappa;
+        this.fs = fs;
     }
     
     
@@ -190,7 +192,7 @@ public class FormPersonaggio extends javax.swing.JFrame {
     private void btnNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextActionPerformed
         nickname = tfdNome.getText();
         gameManager = new GameManager(personaggio, mappa, nickname);
-        formGioco = new FormGioco(gameManager);
+        formGioco = new FormGioco(gameManager, fs);
         formGioco.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_btnNextActionPerformed

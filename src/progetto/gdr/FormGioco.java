@@ -18,13 +18,15 @@ public class FormGioco extends javax.swing.JFrame {
     private GameManager gameManager;
     private String[] time;
     private int tempo;
+    private FormSalvataggio fs;
 
     /**
      * Creates new form FormGioco
      */
-    public FormGioco(GameManager gm) {
+    public FormGioco(GameManager gm, FormSalvataggio fs) {
         initComponents();
-        this.nome = nome;
+        
+        this.fs = fs;
         gameManager = gm;
         gameManager.getMappa().setPersonaggio(gameManager.getPersonaggio());
 
@@ -365,6 +367,7 @@ public class FormGioco extends javax.swing.JFrame {
         if (!gameManager.check()) {
             JOptionPane.showMessageDialog(null, "Sei Morto!", "Fallimento", JOptionPane.INFORMATION_MESSAGE);
             btnEsplora.setEnabled(false);
+            btnSalva.setEnabled(false);
         }
     }//GEN-LAST:event_btnEsploraActionPerformed
 
@@ -379,11 +382,9 @@ public class FormGioco extends javax.swing.JFrame {
     }//GEN-LAST:event_btnMedicineActionPerformed
 
     private void btnSalvaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvaActionPerformed
-        try {
-            gameManager.salvaCSV("dati.csv");
-        } catch (IOException ex) {
-            System.getLogger(FormGioco.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);
-        }
+        fs.setWrite(true);
+        fs.setGameManager(gameManager);
+        fs.setVisible(true);
     }//GEN-LAST:event_btnSalvaActionPerformed
 
 

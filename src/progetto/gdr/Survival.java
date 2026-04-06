@@ -4,6 +4,9 @@
  */
 package progetto.gdr;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
+
 /**
  *
  * @author lin.elena
@@ -13,8 +16,9 @@ public class Survival {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException, FileNotFoundException, ClassNotFoundException {
         FormMenu fm = new FormMenu();
+        fm.setSize(400,600);
         fm.setVisible(true);
     }
     

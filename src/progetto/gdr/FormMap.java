@@ -13,12 +13,14 @@ public class FormMap extends javax.swing.JFrame {
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(FormMap.class.getName());
     private FormPersonaggio formPersonaggio;
     private Mappa mappa;
+    private FormSalvataggio fs;
     /**
      * Creates new form FormMap
      */
-    public FormMap() {
+    public FormMap(FormSalvataggio fs) {
         initComponents();
         
+        this.fs = fs;
         btnNext.setEnabled(false);
     }
 
@@ -139,7 +141,7 @@ public class FormMap extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextActionPerformed
-        formPersonaggio = new FormPersonaggio(mappa);
+        formPersonaggio = new FormPersonaggio(mappa, fs);
         formPersonaggio.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_btnNextActionPerformed
