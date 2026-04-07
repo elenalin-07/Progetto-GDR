@@ -29,9 +29,9 @@ public abstract class Mappa implements Serializable{
     }
     
     public String stradaBloccata(){
-        personaggio.aumentaFame(5);
-        personaggio.aumentaSete(5);
-        return "la strada che stai andando e' bloccato devi cambia lastrada, ti aumenta la sete e la fame";
+        personaggio.aumentaFame(8);
+        personaggio.aumentaSete(8);
+        return "La strada è bloccata. Devi cambiare percorso.\nLa fatica aumenta: fame e sete crescono.";
     }
             
     public String cibo(){
@@ -49,7 +49,7 @@ public abstract class Mappa implements Serializable{
             personaggio.addCibo(1);
             cibo = 1;
         }
-        return "hai trovato " + cibo + " cibo";
+        return "Hai trovato " + cibo + " cibo";
     }
     
     public String acqua(){
@@ -68,7 +68,7 @@ public abstract class Mappa implements Serializable{
             personaggio.addAcqua(1);
             acqua = 1;
         }
-        return "hai trovato " + acqua + " bottiglia di acqua";
+        return "Hai trovato " + acqua + " bottiglia di acqua";
     }
     
     public String medicine(){
@@ -87,21 +87,30 @@ public abstract class Mappa implements Serializable{
             personaggio.addMedicine(1);
             medicine = 1;
         }
-        return "hai trovato " + medicine + " medicine";
+        return "Hai trovato " + medicine + " medicine";
+    }
+    
+    public String rifugioSicuro(){
+        personaggio.addSaluteMax(10);
+        return "Trovi un rifugio sicuro dove puoi riposarti.\nRecuperi le forze e ti senti più resistente.";
     }
     
     public String banditi(){
+        String output = "Un gruppo di banditi ti tende un’imboscata lungo la strada.\nSembrano pronti ad attaccare.";
         int attacoNemico = random.nextInt(40,60);
         if(personaggio.getAttaco() < attacoNemico){
             personaggio.danni(random.nextInt(attacoNemico));
-            return "hai subito " + attacoNemico + " danni";
+            personaggio.addAttaco(10);
+            return output + "\nSconfitta. Salute ridotta. Sei fuggito.";
         }
-        String output = cibo();
-        output += acqua();
-        output += medicine();
-        return """
-               hai sconfitto nemici
-               """ + output;
+        output += "\nBanditi sconfitti. Risorse ottenute.\n"+ cibo() + "\n" + acqua()+ "\n"+ medicine();
+        return output;
+    }
+    
+    public String sopravvisuto(){
+        personaggio.addSaluteMax(5);
+        personaggio.addAttaco(10);
+        return "Un sopravvissuto ti offre consigli preziosi.";
     }
     
     public abstract String eventoCasuale();

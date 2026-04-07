@@ -14,33 +14,36 @@ public class Mare extends Mappa{
     }
     
     public String pirati(){
-        String output = "Hai incontrato dei pirati";
+        String output = "Mentre navighi su una piccola barca, noti delle vele all’orizzonte: pirati.\n";
         int attacoPirate = random.nextInt(50, 70);
         if(personaggio.getAttaco() >= attacoPirate){
-            output += "\nHai sconfitto i pirati. Rifornimenti recuperati con successo";
-            output += "\n" + cibo();
-            output += "\n" + acqua();
-            output += "\n" + medicine();
+            personaggio.addAttaco(25);
+            return output + "Riesci a difenderti e respingere i pirati! Ottieni provviste rubate.\n" + cibo() + "\n" + acqua() + "\n" + medicine();
         }
-        else{
-            output += "\nHai perso contro i pirat.! Tutti i rifornimenti sono stati rubati";
+            output += "Hai perso contro i pirati. Tutti i rifornimenti sono stati rubati";
             personaggio.azzeramento();
             int danni = random.nextInt(30,60);
             personaggio.danni(danni);
             output = "\nHai subito " + danni + " danni";
-        }
         return output;
     }
     
     public String tempeste(){
         personaggio.azzeramento();
-        return "Hai incontrato una tempesta e hai perso i riferimenti";
+        personaggio.danni(5);
+        return "Nuvole scure si accumulano e il vento si alza.\nLa barca è capovolta dalle onde, salute leggermente diminuite. E hai perso i riferimenti";
+    }
+    
+    public String pioggia(){
+        personaggio.diminuiSete(15);
+        personaggio.addAcqua(2);
+        return "Una pioggia improvvisa cade sul mare, rinfrescando l’aria e bagnando la barca.\nRaccogli acqua piovana e ti disseti un po’.";
     }
     
     public String cassaRifornimento(){
-        String output = "Hai trovato una cassa di rifornimenti";
+        String output = "Noti una cassa galleggiante tra le onde.\n";
         int n = random.nextInt(10);
-        output ="\n" + cibo();
+        output += cibo();
         if(n < 4){
             output ="\n" + acqua();
         }
@@ -48,6 +51,34 @@ public class Mare extends Mappa{
             output ="\n" + medicine();
         }
         return output;
+    }
+    
+    public String pesce(){
+        personaggio.addCibo(1);
+        personaggio.diminuiFame(15);
+        return "Un gruppo di pesci nuota vicino.\nRiesci a pescare qualcosa, fame diminuita e risorse aumentate.";
+    }
+    
+    public String isola(){
+        personaggio.diminuiFame(15);
+        personaggio.diminuiSete(15);
+        return "Scopri un piccolo isolotto con provviste naturali.\nRaccolti frutti e acqua dolce, fame e sete diminuite.\n" + cibo() + "\n" + acqua();
+    }
+    
+    public String riposo(){
+        personaggio.addSalute(20);
+        personaggio.addSaluteMax(5);
+        return "Ti sdrai al sole durante una giornata calma.\nRecuperi salute e resistenza, salute massima aumentata.";
+    }
+    
+    public String pesceGigante(){
+        int num = random.nextInt(100);  
+        if(num < personaggio.getAttaco()){
+            personaggio.addCibo(3);
+            return "Mentre navighi, un’ombra enorme si muove sotto la barca: un pesce gigante.\nRiesci a catturare il pesce! Forza e agilità aumentano, ottieni cibo extra.";
+        }
+        personaggio.danni(10);
+        return "Mentre navighi, un’ombra enorme si muove sotto la barca: un pesce gigante.\nIl pesce ti fa perdere l’equilibrio. Subisci ferite e perdi energia; cibo nullo.";
     }
     
     public String squalo(){
@@ -65,31 +96,37 @@ public class Mare extends Mappa{
         return output;
     }
     
+    public String ventoContrario(){
+        personaggio.aumentaFame(8);
+        personaggio.aumentaSete(8);
+        return "Devi remare più a lungo; fame e sete aumentano leggermente.";
+    }
+    
     @Override
     public String eventoCasuale(){
-        int num = random.nextInt(16);
-        String output = "Non successo niente";
+        int num = random.nextInt(20);
+        String output = "Non succede nulla.";
         switch(num){
             case 0:
-                output = cibo();
+                output = isola();
                 break;
             case 1:
-                output = acqua();
+                output = pesceGigante();
                 break;
             case 3:
-                output = medicine();
+                output = cassaRifornimento();
                 break;
             case 5:
                 output = squalo();
                 break;
             case 6:
-                output = cibo();
+                output = pesce();
                 break;
             case 7:
                 output = tempeste();
                 break;
             case 8:
-                output = acqua();
+                output = pioggia();
                 break;
             case 9:
                 output = squalo();
@@ -98,14 +135,22 @@ public class Mare extends Mappa{
                 output = pirati();
                 break;
             case 12:
-                output = medicine();
+                output = riposo();
                 break;
             case 14:
-                output = tempeste();
+                output = pesce();
                 break;
             case 15:
-                output = stradaBloccata();
+                output = ventoContrario();
+                break;
+            case 16:
+                output = pioggia();
+                break;
+            case 18:
+                output = pesceGigante();
+                break;
+                
         }
-        return output;
+        return "\n" + output;
     }
 }

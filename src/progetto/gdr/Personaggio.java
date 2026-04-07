@@ -12,7 +12,7 @@ import java.util.ArrayList;
  * @author lin.elena
  */
 public abstract class Personaggio implements Serializable{
-    protected int salute, sete, fame, attaco, nAcqua, nCibo, nMedicine, maxSalute;
+    protected int salute, sete, fame, attaco, nAcqua, nCibo, nMedicine, saluteMax;
     protected String nome;
     
     public Personaggio(){
@@ -22,8 +22,8 @@ public abstract class Personaggio implements Serializable{
         nAcqua = 1;
         nCibo = 1;
         nMedicine = 0;
-        maxSalute = 100;
-        salute = maxSalute;
+        saluteMax = 100;
+        salute = saluteMax;
     }
     
     public abstract void abilitaSpecial();
@@ -57,7 +57,7 @@ public abstract class Personaggio implements Serializable{
     }
     
     public int getMaxSalute(){
-        return maxSalute;
+        return saluteMax;
     }
     
     public void addAcqua(int num){
@@ -70,6 +70,35 @@ public abstract class Personaggio implements Serializable{
     
     public void addMedicine(int num){
         nMedicine += num;
+    }
+    
+    public void addAttaco(int num){
+        attaco += num;
+    }
+    
+    public void addSaluteMax(int num){
+        saluteMax += num;
+    }
+    
+    public void diminuiSete(int num){
+        sete -= num;
+        if(sete < 0){
+            sete = 0;
+        }
+    }
+    
+    public void diminuiFame(int num){
+        fame -= num;
+        if(fame < 0){
+            fame = 0;
+        }
+    }
+    
+    public void addSalute(int num){
+        salute += num;
+        if(salute > saluteMax){
+            salute = saluteMax;
+        }
     }
     
     public boolean bere(){
@@ -105,8 +134,8 @@ public abstract class Personaggio implements Serializable{
             return false;
         }
         salute += 10;
-        if(salute > maxSalute){
-            fame = maxSalute;
+        if(salute > saluteMax){
+            fame = saluteMax;
         }
         return true;
     }
@@ -119,7 +148,7 @@ public abstract class Personaggio implements Serializable{
         this.nAcqua = nAcqua;
         this.nCibo = nCibo;
         this.nMedicine = nMedicine;
-        this.maxSalute = maxSalute;
+        this.saluteMax = maxSalute;
     }
     
     
@@ -142,6 +171,6 @@ public abstract class Personaggio implements Serializable{
     }
     
     public String getDati(){
-        return nome + "," + salute + "," + sete + "," + fame + "," + attaco + "," + nAcqua + "," + nCibo + "," + nMedicine + "," + maxSalute;
+        return nome + "," + salute + "," + sete + "," + fame + "," + attaco + "," + nAcqua + "," + nCibo + "," + nMedicine + "," + saluteMax;
     }
 }

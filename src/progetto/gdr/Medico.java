@@ -12,13 +12,13 @@ public class Medico extends Personaggio{
     public Medico(){
         nome = "medico";
         nMedicine = 1;
-        maxSalute = 120;
-        salute = maxSalute;
+        saluteMax = 120;
+        salute = saluteMax;
     }
     
     @Override
     public void abilitaSpecial(){
-        salute = maxSalute;
+        salute = saluteMax;
         nMedicine++;
     }
 }
