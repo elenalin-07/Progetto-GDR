@@ -65,9 +65,16 @@ public class FormGioco extends javax.swing.JFrame {
     }
 
     public String esplora() {
-        String[] dati = gameManager.esplora().split("1121");
+        String d = gameManager.esplora();
+        if(gameManager.getDays() >= 30){
+            background = d;
+            btnEsplora.setEnabled(false);
+            setDati();
+            return "Sei riuscito a sopravvivere!";
+        }
+        
+        String[] dati = d.split("1121");
         background = dati[1];
-        System.out.println(dati[0] + dati[1]);
         setDati();
         return dati[0];
     }

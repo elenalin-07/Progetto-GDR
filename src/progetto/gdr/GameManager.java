@@ -59,6 +59,16 @@ public class GameManager implements Serializable{
         if(personaggio.sete >= 30){
             personaggio.salute -= personaggio.sete/10;
         }
+        
+        if (days == 30) {
+            if (mappa.getNome().equals("deserto")) {
+                return "/images/finslDeserto.JPG";
+            } else if (mappa.getNome().equals("cittaDistrutta")) {
+                return "/images/finalCD.JPG";
+            } else {
+                return "/images/finalMare.JPG";
+            }
+        }
         return mappa.eventoCasuale();
     }
     
