@@ -4,6 +4,8 @@
  */
 package progetto.gdr;
 
+import javax.swing.ImageIcon;
+
 /**
  *
  * @author zxt02
@@ -31,6 +33,7 @@ public class FormIstruzione extends javax.swing.JFrame {
                 + "Ogni scelta può determinare la tua vita o la tua morte.");
                 btnNext.setEnabled(true);
                 btnBack.setEnabled(false);
+                lblImage.setIcon(new ImageIcon(getClass().getResource("/images/step1.png")));
                break;
             case 1:
                 txtaTesto.setText("Premendo il pulsante “Esplora”, eseguirai un’azione e verrà attivato un evento casuale. Potrai trovare risorse, incontrare nemici o affrontare pericoli imprevisti.\n"
@@ -38,6 +41,7 @@ public class FormIstruzione extends javax.swing.JFrame {
                         + "Gestisci attentamente le tue scelte per sopravvivere e continuare il viaggio verso il rifugio.");
                 btnNext.setEnabled(true);
                 btnBack.setEnabled(true);
+                lblImage.setIcon(new ImageIcon(getClass().getResource("/images/step2.png")));
                 break;
             case 2:
                 txtaTesto.setText("Fame / Sete\n"
@@ -47,18 +51,20 @@ public class FormIstruzione extends javax.swing.JFrame {
                         + "Il valore di attacco determina l’efficacia in combattimento. Quando incontri un nemico, un attacco alto aumenta le possibilità di vittoria e di ottenere risorse; se è troppo basso, sarai costretto a fuggire subendo danni.");
                 btnNext.setEnabled(true);
                 btnBack.setEnabled(true);
+                lblImage.setIcon(new ImageIcon(getClass().getResource("/images/step3.png")));
                 break;
             case 3:
-                txtaTesto.setText("💧 Bottone Acqua\n"
+                txtaTesto.setText("Bottone Acqua\n"
                         + "Premendo questo pulsante puoi usare l’acqua disponibile per ridurre il livello di sete e mantenere la sopravvivenza.\n"
                         + "\n"
-                        + "🍖 Bottone Cibo\n"
+                        + "Bottone Cibo\n"
                         + "Premendo questo pulsante puoi usare il cibo disponibile per ridurre la fame e recuperare energia.\n"
                         + "\n"
-                        + "💊 Bottone Medicina\n"
+                        + "Bottone Medicina\n"
                         + "Premendo questo pulsante puoi usare le medicine per recuperare salute e resistere ai danni o alle malattie.");
-                btnNext.setEnabled(false);
+                btnNext.setEnabled(true);
                 btnBack.setEnabled(true);
+                lblImage.setIcon(new ImageIcon(getClass().getResource("/images/step4.png")));
                 break;
             case 4:
                 txtaTesto.setText("Pulsante Salva\n"
@@ -67,9 +73,9 @@ public class FormIstruzione extends javax.swing.JFrame {
                         + "Sono disponibili due modalità di salvataggio:\n"
                         + "Formato CSV – Facile da leggere e modificare manualmente.\n"
                         + "Formato SER – Serializzazione degli oggetti Java, per salvare e ripristinare lo stato completo del gioco.");
-                click = 0;
                 btnNext.setEnabled(false);
                 btnBack.setEnabled(true);
+                lblImage.setIcon(new ImageIcon(getClass().getResource("/images/step5.png")));
                 break;
         }
     }
@@ -107,6 +113,8 @@ public class FormIstruzione extends javax.swing.JFrame {
                 btnBackActionPerformed(evt);
             }
         });
+
+        lblImage.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
         btnNext.setBackground(new java.awt.Color(0, 204, 51));
         btnNext.setFont(new java.awt.Font("Stencil", 0, 12)); // NOI18N
@@ -168,8 +176,8 @@ public class FormIstruzione extends javax.swing.JFrame {
                         .addGap(29, 29, 29)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(31, 31, 31)))
-                .addComponent(lblImage, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 86, Short.MAX_VALUE)
+                .addComponent(lblImage, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 74, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnNext, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))

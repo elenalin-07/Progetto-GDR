@@ -87,8 +87,8 @@
                           <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <Component id="lblImage" min="-2" pref="88" max="-2" attributes="0"/>
-                  <EmptySpace pref="86" max="32767" attributes="0"/>
+                  <Component id="lblImage" min="-2" pref="100" max="-2" attributes="0"/>
+                  <EmptySpace pref="74" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="btnBack" alignment="3" min="-2" pref="39" max="-2" attributes="0"/>
                       <Component id="btnNext" alignment="3" min="-2" pref="39" max="-2" attributes="0"/>
@@ -129,6 +129,9 @@
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="lblImage">
+          <Properties>
+            <Property name="horizontalAlignment" type="int" value="0"/>
+          </Properties>
         </Component>
         <Component class="javax.swing.JButton" name="btnNext">
           <Properties>
