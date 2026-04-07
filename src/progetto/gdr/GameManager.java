@@ -48,6 +48,7 @@ public class GameManager implements Serializable{
         }
         time = times[click];
         if(turni/4 != 0) days = turni/4;
+        else if(turni/4 == 1) days = 2;
         
         if(personaggio.fame <= 50) personaggio.fame++;
         if(personaggio.sete <= 50) personaggio.sete++;

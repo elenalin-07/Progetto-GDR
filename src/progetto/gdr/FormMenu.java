@@ -19,6 +19,7 @@ public class FormMenu extends javax.swing.JFrame {
     private FormGioco formGioco;
     private GameManager gm;
     private FormSalvataggio fs;
+    private FormIstruzione fi;
     /**
      * Creates new form FormMenu
      */
@@ -27,6 +28,7 @@ public class FormMenu extends javax.swing.JFrame {
         
         fs = new FormSalvataggio();
         formMap = new FormMap(fs);
+        fi = new FormIstruzione();
         
     }
     /**
@@ -41,12 +43,10 @@ public class FormMenu extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         btnStart = new javax.swing.JButton();
-        btnClassifica = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        btnIstruzione = new javax.swing.JButton();
         btnContinua = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(400, 600));
 
         jPanel1.setBackground(new java.awt.Color(243, 243, 209));
         jPanel1.setMinimumSize(new java.awt.Dimension(400, 600));
@@ -68,19 +68,17 @@ public class FormMenu extends javax.swing.JFrame {
             }
         });
 
-        btnClassifica.setBackground(new java.awt.Color(255, 204, 204));
-        btnClassifica.setFont(new java.awt.Font("Stencil", 0, 12)); // NOI18N
-        btnClassifica.setText("CLASSIFICA");
-        btnClassifica.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        btnClassifica.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnClassifica.setPreferredSize(new java.awt.Dimension(160, 50));
-
-        jButton3.setBackground(new java.awt.Color(204, 204, 255));
-        jButton3.setFont(new java.awt.Font("Stencil", 0, 12)); // NOI18N
-        jButton3.setText("ISTRUZIONE");
-        jButton3.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jButton3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton3.setPreferredSize(new java.awt.Dimension(160, 50));
+        btnIstruzione.setBackground(new java.awt.Color(204, 204, 255));
+        btnIstruzione.setFont(new java.awt.Font("Stencil", 0, 12)); // NOI18N
+        btnIstruzione.setText("ISTRUZIONE");
+        btnIstruzione.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnIstruzione.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnIstruzione.setPreferredSize(new java.awt.Dimension(160, 50));
+        btnIstruzione.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnIstruzioneActionPerformed(evt);
+            }
+        });
 
         btnContinua.setBackground(new java.awt.Color(204, 255, 204));
         btnContinua.setFont(new java.awt.Font("Stencil", 0, 12)); // NOI18N
@@ -108,8 +106,7 @@ public class FormMenu extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btnStart, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnContinua, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnClassifica, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(btnIstruzione, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(87, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -121,15 +118,12 @@ public class FormMenu extends javax.swing.JFrame {
                 .addComponent(btnStart, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(40, 40, 40)
                 .addComponent(btnContinua, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(40, 40, 40)
-                .addComponent(btnClassifica, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(40, 40, 40)
-                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(86, Short.MAX_VALUE))
+                .addGap(45, 45, 45)
+                .addComponent(btnIstruzione, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(171, Short.MAX_VALUE))
         );
 
-        btnClassifica.getAccessibleContext().setAccessibleName("");
-        jButton3.getAccessibleContext().setAccessibleName("");
+        btnIstruzione.getAccessibleContext().setAccessibleName("");
         btnContinua.getAccessibleContext().setAccessibleName("");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -157,12 +151,15 @@ public class FormMenu extends javax.swing.JFrame {
         fs.setVisible(true);
     }//GEN-LAST:event_btnContinuaActionPerformed
 
+    private void btnIstruzioneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIstruzioneActionPerformed
+        fi.setVisible(true);
+    }//GEN-LAST:event_btnIstruzioneActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnClassifica;
     private javax.swing.JButton btnContinua;
+    private javax.swing.JButton btnIstruzione;
     private javax.swing.JButton btnStart;
-    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables

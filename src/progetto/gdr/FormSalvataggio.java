@@ -8,6 +8,9 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JLabel;
 
 /**
  *
@@ -111,16 +114,27 @@ public class FormSalvataggio extends javax.swing.JFrame {
         }
     }
     
+    public void setImages(GameManager gm, JButton btn, JLabel lbl){
+        if (gm.getMappa().getNome().equals("deserto")) {
+                btn.setIcon(new ImageIcon(getClass().getResource("/images/desertoSimbolo.jpg")));
+            } else if (gm.getMappa().getNome().equals("cittaDistrutta")) {
+                btn.setIcon(new ImageIcon(getClass().getResource("/images/CDsimbolo.jpg")));
+            } else {
+                btn.setIcon(new ImageIcon(getClass().getResource("/images/mareSimbolo.jpg")));
+            }
+            lbl.setText(gm.getNickname());
+    }
+    
     public void deserializza() throws IOException, FileNotFoundException, ClassNotFoundException{
         File f1 = new File("salvataggio1.ser");
         File f2 = new File("salvataggio2.ser");
         if(f1.length() != 0){
             gm1 = FileManager.deserializza("salvataggio1.ser");
-            btnSalvataggio1.setText(gm1.getNickname());
+            setImages(gm1, btnSalvataggio1, lblNickname1);
         }
         if(f2.length() != 0){
             gm2 = FileManager.deserializza("salvataggio2.ser");
-            btnSalvataggio2.setText(gm2.getNickname());
+            setImages(gm2, btnSalvataggio2, lblNickname2);
         }
     }
         
@@ -139,20 +153,23 @@ public class FormSalvataggio extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         btnCSV = new javax.swing.JButton();
         btnSerializzazione = new javax.swing.JButton();
+        lblNickname1 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        lblNickname2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(800, 600));
 
         jPanel1.setBackground(new java.awt.Color(226, 236, 226));
 
-        btnSalvataggio2.setPreferredSize(new java.awt.Dimension(255, 255));
+        btnSalvataggio2.setPreferredSize(new java.awt.Dimension(200, 200));
         btnSalvataggio2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSalvataggio2ActionPerformed(evt);
             }
         });
 
-        btnSalvataggio1.setPreferredSize(new java.awt.Dimension(255, 255));
+        btnSalvataggio1.setPreferredSize(new java.awt.Dimension(200, 200));
         btnSalvataggio1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSalvataggio1ActionPerformed(evt);
@@ -189,6 +206,14 @@ public class FormSalvataggio extends javax.swing.JFrame {
             }
         });
 
+        lblNickname1.setFont(new java.awt.Font("Stencil", 0, 12)); // NOI18N
+
+        jLabel3.setText("Nickname");
+
+        jLabel4.setText("Nickname");
+
+        lblNickname2.setFont(new java.awt.Font("Stencil", 0, 12)); // NOI18N
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -198,19 +223,32 @@ public class FormSalvataggio extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addGap(260, 260, 260))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(93, 93, 93)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnSalvataggio1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(43, 43, 43)
-                        .addComponent(btnCSV, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 104, Short.MAX_VALUE)
+                        .addGap(136, 136, 136)
+                        .addComponent(btnCSV, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(112, 112, 112)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel3)
+                                .addGap(18, 18, 18)
+                                .addComponent(lblNickname1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(btnSalvataggio1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 169, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnSalvataggio2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(btnSerializzazione, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(53, 53, 53)))
-                .addGap(93, 93, 93))
+                        .addGap(146, 146, 146))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                                .addGap(9, 9, 9)
+                                .addComponent(jLabel4)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(lblNickname2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(btnSalvataggio2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(119, 119, 119))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -221,7 +259,13 @@ public class FormSalvataggio extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSalvataggio2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnSalvataggio1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 72, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblNickname1, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel4)
+                    .addComponent(lblNickname2, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 88, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCSV, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnSerializzazione, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -289,10 +333,10 @@ public class FormSalvataggio extends javax.swing.JFrame {
         gm1 = readCSV("salvataggio1.csv");
         gm2 = readCSV("salvataggio2.csv");
         if (gm1 != null) {
-            btnSalvataggio1.setText(gm1.getNickname());
+            setImages(gm1, btnSalvataggio1, lblNickname1);
         }
         if (gm2 != null){
-            btnSalvataggio2.setText(gm2.getNickname());
+            setImages(gm2, btnSalvataggio2, lblNickname2);
         }
         tipoFile = 2;
     }//GEN-LAST:event_btnCSVActionPerformed
@@ -317,6 +361,10 @@ public class FormSalvataggio extends javax.swing.JFrame {
     private javax.swing.JButton btnSalvataggio2;
     private javax.swing.JButton btnSerializzazione;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel lblNickname1;
+    private javax.swing.JLabel lblNickname2;
     // End of variables declaration//GEN-END:variables
 }

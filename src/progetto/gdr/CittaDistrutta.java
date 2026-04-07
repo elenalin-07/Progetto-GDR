@@ -24,7 +24,7 @@ public class CittaDistrutta extends Mappa{
         output = "Hai trovato un ospedale da campo abbandonato.\nPotresti cercare medicine e cure, ma il pericolo è ovunque.\n" + medicine();
         int num = random.nextInt(10);
         if(num < 2){
-            output += " e " + nemico();
+            output += "\n" + nemico();
         }
         return output;
     }
@@ -52,6 +52,8 @@ public class CittaDistrutta extends Mappa{
     }
     
     public String deposito(){
+        personaggio.addAcqua(2);
+        personaggio.addCibo(2);
         return "Scopri un piccolo deposito nascosto tra le macerie.\n" + cibo();
     }
     
@@ -59,9 +61,10 @@ public class CittaDistrutta extends Mappa{
         return "Scopri una farmacia distrutta, tra le rovine di una farmacia puoi trovare medicinali.\n" + medicine();
     }
     
-    public String animali(){
-        personaggio.diminuiFame(20);
-        return "Segui tracce di animali tra le rovine.\nTrovi piccoli animali da cacciare, la fame diminuisce.";
+    public String distributore(){
+        personaggio.addAcqua(1);
+        personaggio.addCibo(1);
+        return "Tra le rovine trovi un distributore ancora funzionante. Recuperi bevande e snack utili.";
     }
     
     public String pioggiaAcida(){
@@ -72,52 +75,52 @@ public class CittaDistrutta extends Mappa{
     @Override
     public String eventoCasuale(){
         int num = random.nextInt(20);
-        String output = "Non succede nulla.";
+        String output = "Non succede nulla.1121/images/CD.JPG";
         switch(num){
             case 0:
-                output = deposito();
+                output = deposito() + "1121/images/deposito.JPG";
                 break;
             case 2:
-                output = pozzo();
+                output = pozzo() + "1121/images/pozzoCD.JPG";
                 break;
             case 3:
-                output = animali();
+                output = distributore() + "1121/images/distributore.JPG";
                 break;
             case 5:
-                output = negozio();
+                output = negozio() + "1121/images/negozio.JPG";
                 break;
             case 6:
-                output = deposito();
+                output = deposito() + "1121/images/deposito.JPG";
                 break;
             case 7:
-                output = negozio();
+                output = negozio() + "1121/images/deposito.JPG";
                 break;
             case 8:
-                output = pozzo();
+                output = pozzo() + "1121/images/pozzoCD.JPG";
                 break;
             case 9:
-                output = nemico();
+                output = nemico() + "1121/images/nemici.JPG";
                 break;
             case 11:
-                output = ospedale();
+                output = ospedale() + "1121/images/ospedale.JPG";
                 break;
             case 13:
-                output = farmacia();
+                output = farmacia() + "1121/images/farmacia.JPG";
                 break;
             case 14:
-                output = banditi();
+                output = banditi() + "1121/images/nemici.JPG";
                 break;
             case 15:
-                output = stradaBloccata();
+                output = stradaBloccata() + "1121/images/CD.JPG";
                 break;
             case 17:
-                output = accampamentoMilitare();
+                output = accampamentoMilitare() + "1121/images/accampamento.JPG";
                 break;
             case 18:
-                output = rifugioSicuro();
+                output = rifugioSicuro() + "1121/images/rifugioCD.JPG";
                 break;
             case 19:
-                output = pioggiaAcida();
+                output = pioggiaAcida() + "1121/images/pioggiaCD.JPG";
         }
         return "\n" + output;
     }

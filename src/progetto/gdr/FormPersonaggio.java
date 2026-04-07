@@ -4,6 +4,8 @@
  */
 package progetto.gdr;
 
+import javax.swing.ImageIcon;
+
 /**
  *
  * @author lin.elena
@@ -17,10 +19,11 @@ public class FormPersonaggio extends javax.swing.JFrame {
     private GameManager gameManager;
     private Mappa mappa;
     private FormSalvataggio fs;
+    private FormMap fm;
     /**
      * Creates new form FormPersonaggio
      */
-    public FormPersonaggio(Mappa mappa, FormSalvataggio fs) {
+    public FormPersonaggio(Mappa mappa, FormSalvataggio fs, FormMap fm) {
         initComponents();
         
         lblNomeVuoto.setVisible(false);
@@ -28,6 +31,11 @@ public class FormPersonaggio extends javax.swing.JFrame {
         nickname = null;
         this.mappa = mappa;
         this.fs = fs;
+        this.fm = fm;
+        
+        btnMedico.setIcon(new ImageIcon(getClass().getResource("/images/medico.jpg")));
+        btnCuoco.setIcon(new ImageIcon(getClass().getResource("/images/cuoco.jpg")));
+        btnVeterano.setIcon(new ImageIcon(getClass().getResource("/images/veterano.jpg")));
     }
     
     
@@ -55,6 +63,7 @@ public class FormPersonaggio extends javax.swing.JFrame {
         tfdNome = new javax.swing.JTextField();
         btnNext = new javax.swing.JButton();
         lblNomeVuoto = new javax.swing.JLabel();
+        btnBack = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -96,6 +105,7 @@ public class FormPersonaggio extends javax.swing.JFrame {
         btnNext.setFont(new java.awt.Font("Stencil", 0, 12)); // NOI18N
         btnNext.setForeground(new java.awt.Color(255, 255, 255));
         btnNext.setText("Next");
+        btnNext.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnNext.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnNextActionPerformed(evt);
@@ -105,6 +115,17 @@ public class FormPersonaggio extends javax.swing.JFrame {
         lblNomeVuoto.setForeground(new java.awt.Color(204, 0, 0));
         lblNomeVuoto.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblNomeVuoto.setText("per favore, inserisci il nome");
+
+        btnBack.setBackground(new java.awt.Color(0, 0, 153));
+        btnBack.setFont(new java.awt.Font("Stencil", 0, 12)); // NOI18N
+        btnBack.setForeground(new java.awt.Color(255, 255, 255));
+        btnBack.setText("Back");
+        btnBack.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBackActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -117,7 +138,6 @@ public class FormPersonaggio extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(22, 22, 22)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btnNext, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(tfdNome, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(btnCuoco, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -127,6 +147,12 @@ public class FormPersonaggio extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
                 .addComponent(btnVeterano, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(34, 34, 34)
+                .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnNext, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(38, 38, 38))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -142,9 +168,11 @@ public class FormPersonaggio extends javax.swing.JFrame {
                 .addComponent(tfdNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblNomeVuoto)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
-                .addComponent(btnNext, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(24, 24, 24))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnNext, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(25, 25, 25))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -155,7 +183,7 @@ public class FormPersonaggio extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 623, Short.MAX_VALUE)
         );
 
         pack();
@@ -197,8 +225,14 @@ public class FormPersonaggio extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_btnNextActionPerformed
 
+    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
+        fm.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_btnBackActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnBack;
     private javax.swing.JButton btnCuoco;
     private javax.swing.JButton btnMedico;
     private javax.swing.JButton btnNext;

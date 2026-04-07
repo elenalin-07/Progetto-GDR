@@ -4,8 +4,14 @@
  */
 package progetto.gdr;
 
+import java.awt.BorderLayout;
+import java.awt.Graphics;
+import java.awt.Image;
 import java.io.IOException;
+import java.net.URL;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 
 /**
  *
@@ -19,13 +25,14 @@ public class FormGioco extends javax.swing.JFrame {
     private String[] time;
     private int tempo;
     private FormSalvataggio fs;
+    private String background;
 
     /**
      * Creates new form FormGioco
      */
     public FormGioco(GameManager gm, FormSalvataggio fs) {
         initComponents();
-        
+
         this.fs = fs;
         gameManager = gm;
         gameManager.getMappa().setPersonaggio(gameManager.getPersonaggio());
@@ -39,13 +46,30 @@ public class FormGioco extends javax.swing.JFrame {
         time[3] = "22:00";
 
         gameManager.setTime(time);
+        
+        btnCibo.setIcon(new ImageIcon(getClass().getResource("/images/cibo.jpg")));
+        btnAcqua.setIcon(new ImageIcon(getClass().getResource("/images/acqua.jpg")));
+        btnMedicine.setIcon(new ImageIcon(getClass().getResource("/images/medicine.jpg")));
+        
+        if(gameManager.getMappa().getNome().equals("deserto")){
+            background = "/images/deserto.JPG";
+        }
+        else if(gameManager.getMappa().getNome().equals("cittaDistrutta")){
+            background = "/images/CD.JPG";
+        }
+        else{
+            background = "/images/mare.JPG";
+        }
+        
         setDati();
     }
 
     public String esplora() {
-        String output = gameManager.esplora();
+        String[] dati = gameManager.esplora().split("1121");
+        background = dati[1];
+        System.out.println(dati[0] + dati[1]);
         setDati();
-        return output;
+        return dati[0];
     }
 
     public void setDati() {
@@ -61,8 +85,8 @@ public class FormGioco extends javax.swing.JFrame {
         lblAttaco.setText("" + gameManager.getAttaco());
         lblDays.setText("" + gameManager.getDays());
         lblTime.setText(gameManager.getTime());
-        pgbMappa.setValue(gameManager.getDays());
-        pgbMappa.setStringPainted(true);
+        pgbMappa.setValue(gameManager.getDays()); 
+        lblImage.setIcon(new ImageIcon(getClass().getResource(background)));
     }
 
     /**
@@ -81,29 +105,27 @@ public class FormGioco extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         lblFame = new javax.swing.JLabel();
         lblSete = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        btnAcqua = new javax.swing.JButton();
-        btnCibo = new javax.swing.JButton();
-        btnMedicine = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
         lblAttaco = new javax.swing.JLabel();
-        pgbMappa = new javax.swing.JProgressBar();
-        btnEsplora = new javax.swing.JButton();
-        lblCibo = new javax.swing.JLabel();
-        lblAcqua = new javax.swing.JLabel();
-        lblMedicine = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         lblDays = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        btnSalva = new javax.swing.JButton();
         lblTime = new javax.swing.JLabel();
+        pgbMappa = new javax.swing.JProgressBar();
         slpEvento = new javax.swing.JScrollPane();
         ttaEvento = new javax.swing.JTextArea();
+        btnEsplora = new javax.swing.JButton();
+        btnCibo = new javax.swing.JButton();
+        lblCibo = new javax.swing.JLabel();
+        btnAcqua = new javax.swing.JButton();
+        lblAcqua = new javax.swing.JLabel();
+        btnMedicine = new javax.swing.JButton();
+        lblMedicine = new javax.swing.JLabel();
+        btnSalva = new javax.swing.JButton();
+        lblImage = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(226, 245, 245));
-        jPanel1.setPreferredSize(new java.awt.Dimension(1000, 600));
+        jPanel1.setBackground(new java.awt.Color(47, 43, 25));
 
         pgbSalute.setForeground(new java.awt.Color(204, 0, 0));
         pgbSalute.setToolTipText("");
@@ -120,50 +142,45 @@ public class FormGioco extends javax.swing.JFrame {
         jLabel3.setForeground(new java.awt.Color(0, 0, 153));
         jLabel3.setText("Sete");
 
+        lblFame.setForeground(new java.awt.Color(255, 255, 255));
         lblFame.setText("0");
 
+        lblSete.setForeground(new java.awt.Color(255, 255, 255));
         lblSete.setText("0");
-
-        jLabel4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-
-        btnAcqua.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnAcqua.setMaximumSize(new java.awt.Dimension(80, 80));
-        btnAcqua.setMinimumSize(new java.awt.Dimension(80, 80));
-        btnAcqua.setPreferredSize(new java.awt.Dimension(80, 80));
-        btnAcqua.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAcquaActionPerformed(evt);
-            }
-        });
-
-        btnCibo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnCibo.setMaximumSize(new java.awt.Dimension(80, 80));
-        btnCibo.setMinimumSize(new java.awt.Dimension(80, 80));
-        btnCibo.setPreferredSize(new java.awt.Dimension(80, 80));
-        btnCibo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCiboActionPerformed(evt);
-            }
-        });
-
-        btnMedicine.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnMedicine.setMaximumSize(new java.awt.Dimension(80, 80));
-        btnMedicine.setMinimumSize(new java.awt.Dimension(80, 80));
-        btnMedicine.setPreferredSize(new java.awt.Dimension(80, 80));
-        btnMedicine.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnMedicineActionPerformed(evt);
-            }
-        });
 
         jLabel5.setFont(new java.awt.Font("Stencil", 0, 12)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(0, 102, 102));
         jLabel5.setText("Attaco");
 
+        lblAttaco.setForeground(new java.awt.Color(255, 255, 255));
         lblAttaco.setText("0");
+
+        jLabel6.setFont(new java.awt.Font("Stencil", 0, 14)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(153, 0, 255));
+        jLabel6.setText("Days:");
+
+        lblDays.setFont(new java.awt.Font("Stencil", 0, 14)); // NOI18N
+        lblDays.setForeground(new java.awt.Color(255, 255, 255));
+        lblDays.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lblDays.setText("1");
+
+        lblTime.setFont(new java.awt.Font("MS Gothic", 0, 18)); // NOI18N
+        lblTime.setForeground(new java.awt.Color(255, 255, 255));
+        lblTime.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblTime.setText("Time:");
 
         pgbMappa.setBackground(new java.awt.Color(242, 237, 215));
         pgbMappa.setForeground(new java.awt.Color(232, 188, 24));
+
+        slpEvento.setAutoscrolls(true);
+
+        ttaEvento.setEditable(false);
+        ttaEvento.setColumns(20);
+        ttaEvento.setLineWrap(true);
+        ttaEvento.setRows(5);
+        ttaEvento.setText("Start!");
+        ttaEvento.setWrapStyleWord(true);
+        slpEvento.setViewportView(ttaEvento);
 
         btnEsplora.setBackground(new java.awt.Color(250, 226, 153));
         btnEsplora.setFont(new java.awt.Font("Stencil", 0, 18)); // NOI18N
@@ -179,31 +196,55 @@ public class FormGioco extends javax.swing.JFrame {
             }
         });
 
+        btnCibo.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnCibo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnCibo.setMaximumSize(new java.awt.Dimension(80, 80));
+        btnCibo.setMinimumSize(new java.awt.Dimension(80, 80));
+        btnCibo.setPreferredSize(new java.awt.Dimension(80, 80));
+        btnCibo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCiboActionPerformed(evt);
+            }
+        });
+
+        lblCibo.setForeground(new java.awt.Color(255, 255, 255));
         lblCibo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblCibo.setText("jLabel6");
 
+        btnAcqua.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnAcqua.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnAcqua.setMaximumSize(new java.awt.Dimension(80, 80));
+        btnAcqua.setMinimumSize(new java.awt.Dimension(80, 80));
+        btnAcqua.setPreferredSize(new java.awt.Dimension(80, 80));
+        btnAcqua.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAcquaActionPerformed(evt);
+            }
+        });
+
+        lblAcqua.setForeground(new java.awt.Color(255, 255, 255));
         lblAcqua.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblAcqua.setText("jLabel6");
 
+        btnMedicine.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnMedicine.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnMedicine.setMaximumSize(new java.awt.Dimension(80, 80));
+        btnMedicine.setMinimumSize(new java.awt.Dimension(80, 80));
+        btnMedicine.setPreferredSize(new java.awt.Dimension(80, 80));
+        btnMedicine.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMedicineActionPerformed(evt);
+            }
+        });
+
+        lblMedicine.setForeground(new java.awt.Color(255, 255, 255));
         lblMedicine.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblMedicine.setText("jLabel6");
-
-        jLabel6.setFont(new java.awt.Font("Stencil", 0, 14)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(51, 0, 102));
-        jLabel6.setText("Days:");
-
-        lblDays.setFont(new java.awt.Font("Stencil", 0, 14)); // NOI18N
-        lblDays.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        lblDays.setText("1");
-
-        jLabel8.setFont(new java.awt.Font("Stencil", 0, 14)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(0, 153, 102));
-        jLabel8.setText("Evento");
 
         btnSalva.setBackground(new java.awt.Color(51, 153, 0));
         btnSalva.setFont(new java.awt.Font("Stencil", 0, 10)); // NOI18N
         btnSalva.setForeground(new java.awt.Color(255, 255, 255));
-        btnSalva.setText("salva gioco");
+        btnSalva.setText("salva");
         btnSalva.setActionCommand("");
         btnSalva.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnSalva.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -213,82 +254,64 @@ public class FormGioco extends javax.swing.JFrame {
             }
         });
 
-        lblTime.setFont(new java.awt.Font("MS Gothic", 0, 18)); // NOI18N
-        lblTime.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblTime.setText("Time:");
-
-        slpEvento.setAutoscrolls(true);
-
-        ttaEvento.setEditable(false);
-        ttaEvento.setColumns(20);
-        ttaEvento.setLineWrap(true);
-        ttaEvento.setRows(5);
-        ttaEvento.setWrapStyleWord(true);
-        slpEvento.setViewportView(ttaEvento);
+        lblImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/carovana.jpg"))); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(28, 28, 28)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addGap(42, 42, 42)
+                        .addComponent(lblFame, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel3)
+                        .addGap(55, 55, 55)
+                        .addComponent(lblSete, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel5)
+                        .addGap(26, 26, 26)
+                        .addComponent(lblAttaco, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(30, 30, 30)
+                        .addComponent(pgbSalute, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(lblImage, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(pgbMappa, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblTime, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel5)
-                                .addGap(26, 26, 26)
-                                .addComponent(lblAttaco, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel1)
-                                .addGap(30, 30, 30)
-                                .addComponent(pgbSalute, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 0, Short.MAX_VALUE))
+                                .addComponent(jLabel6)
+                                .addGap(18, 18, 18)
+                                .addComponent(lblDays, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(17, 17, 17)
+                        .addComponent(slpEvento, javax.swing.GroupLayout.PREFERRED_SIZE, 367, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(33, 33, 33)
+                        .addComponent(btnEsplora, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(lblCibo, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnCibo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(27, 27, 27)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addGap(42, 42, 42)
-                                .addComponent(lblFame, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jLabel3)
-                                .addGap(28, 28, 28)
-                                .addComponent(lblSete, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 557, Short.MAX_VALUE)
-                            .addComponent(pgbMappa, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lblTime, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jLabel6)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(lblDays, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                                .addGap(97, 97, 97)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(btnEsplora, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                            .addComponent(lblCibo, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(btnCibo, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGap(31, 31, 31)
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(btnAcqua, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(lblAcqua, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(btnMedicine, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(lblMedicine, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                        .addGap(0, 0, Short.MAX_VALUE)
-                                        .addComponent(btnSalva, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jLabel8)
-                                        .addGap(0, 0, Short.MAX_VALUE))
-                                    .addComponent(slpEvento))))
-                        .addGap(20, 20, 20))))
+                            .addComponent(btnAcqua, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(lblAcqua, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(26, 26, 26)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(btnMedicine, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(lblMedicine, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addComponent(btnSalva, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(20, 20, 20))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -313,35 +336,37 @@ public class FormGioco extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addComponent(lblTime)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(pgbMappa, javax.swing.GroupLayout.PREFERRED_SIZE, 13, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblImage, javax.swing.GroupLayout.PREFERRED_SIZE, 400, Short.MAX_VALUE)
+                .addGap(22, 22, 22)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel8)
-                        .addGap(18, 18, 18)
-                        .addComponent(slpEvento, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnEsplora, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(40, 40, 40)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnCibo, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnAcqua, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnMedicine, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(21, 21, 21)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblCibo)
-                            .addComponent(lblAcqua)
-                            .addComponent(lblMedicine))
-                        .addGap(30, 30, 30)
-                        .addComponent(btnSalva)
-                        .addGap(16, 16, 16))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 433, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(pgbMappa, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(31, Short.MAX_VALUE))))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(btnEsplora, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(49, 49, 49))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(3, 3, 3)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(btnMedicine, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                            .addComponent(lblMedicine)
+                                            .addComponent(btnSalva)))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                                        .addComponent(btnCibo, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(lblCibo))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                                        .addComponent(btnAcqua, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(21, 21, 21)
+                                        .addComponent(lblAcqua))))
+                            .addComponent(slpEvento, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(15, 15, 15))))
         );
-
-        jLabel4.getAccessibleContext().setAccessibleName("lblImage");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -351,7 +376,7 @@ public class FormGioco extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 671, Short.MAX_VALUE)
         );
 
         pack();
@@ -397,16 +422,15 @@ public class FormGioco extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblAcqua;
     private javax.swing.JLabel lblAttaco;
     private javax.swing.JLabel lblCibo;
     private javax.swing.JLabel lblDays;
     private javax.swing.JLabel lblFame;
+    private javax.swing.JLabel lblImage;
     private javax.swing.JLabel lblMedicine;
     private javax.swing.JLabel lblSete;
     private javax.swing.JLabel lblTime;

@@ -86,56 +86,58 @@ public class Deserto extends Mappa{
     }
     
     @Override
-    public String eventoCasuale(){
+    public String eventoCasuale() {
         int num = random.nextInt(20);
-        String output = "Non succede nulla.";
-        switch(num){
+        String output = "Non succede nulla.1121/images/deserto.JPG";
+
+        switch (num) {
             case 0:
-                output = carovana();
+                output = carovana() + "1121/images/carovana.JPG";
                 break;
             case 1:
-                output = oasi();
+                output = oasi() + "1121/images/oasi.JPG";
                 break;
             case 3:
-                output = medicine();
+                output = carovana() + "1121/images/carovana.JPG";
                 break;
             case 5:
-                output = caldo();
+                output = caldo() + "1121/images/deserto.JPG";
                 break;
             case 6:
-                output = racolte();
+                output = racolte() + "1121/images/piante.JPG";
                 break;
             case 7:
-                output = caldo();
+                output = caldo() + "1121/images/deserto.JPG";
                 break;
             case 8:
-                output = oasi();
+                output = oasi() + "1121/images/oasi.JPG";
                 break;
             case 9:
-                output = villaggioAbandonato();
+                output = villaggioAbandonato() + "1121/images/villaggio.JPG";
                 break;
             case 11:
-                output = lupo();
+                output = lupo() + "1121/images/lupo.JPG";
                 break;
             case 12:
-                output = carovana();
+                output = carovana() + "1121/images/carovana.JPG";
                 break;
             case 14:
-                output = banditi();
+                output = banditi() + "1121/images/banditiDeserto.JPG";
                 break;
             case 15:
-                output = stradaBloccata();
+                output = stradaBloccata() + "1121/images/sbDeserto.JPG";
                 break;
             case 16:
-                output = tempesteSabbia();
+                output = tempesteSabbia() + "1121/images/tempesteDeserto.JPG";
                 break;
             case 17:
-                output = iena();
+                output = iena() + "1121/images/iena.JPG";
                 break;
             case 19:
-                output = rifugioSicuro();
+                output = rifugioSicuro() + "1121/images/rifugioDeserto.JPG";
                 break;
         }
+
         return "\n" + output;
     }
 }

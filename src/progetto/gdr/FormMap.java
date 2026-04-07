@@ -4,6 +4,8 @@
  */
 package progetto.gdr;
 
+import javax.swing.ImageIcon;
+
 /**
  *
  * @author lin.elena
@@ -22,6 +24,9 @@ public class FormMap extends javax.swing.JFrame {
         
         this.fs = fs;
         btnNext.setEnabled(false);
+        btnDeserto.setIcon(new ImageIcon(getClass().getResource("/images/desertoSimbolo.jpg")));
+        btnMare.setIcon(new ImageIcon(getClass().getResource("/images/mareSimbolo.jpg")));
+        btnCittaDistrutta.setIcon(new ImageIcon(getClass().getResource("/images/CDsimbolo.jpg")));
     }
 
     /**
@@ -40,6 +45,9 @@ public class FormMap extends javax.swing.JFrame {
         btnMare = new javax.swing.JButton();
         btnCittaDistrutta = new javax.swing.JButton();
         lblDescrizione = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setSize(new java.awt.Dimension(700, 600));
@@ -63,6 +71,7 @@ public class FormMap extends javax.swing.JFrame {
             }
         });
 
+        btnDeserto.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnDeserto.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnDeserto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -70,6 +79,7 @@ public class FormMap extends javax.swing.JFrame {
             }
         });
 
+        btnMare.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnMare.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnMare.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -77,6 +87,7 @@ public class FormMap extends javax.swing.JFrame {
             }
         });
 
+        btnCittaDistrutta.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnCittaDistrutta.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnCittaDistrutta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -84,10 +95,27 @@ public class FormMap extends javax.swing.JFrame {
             }
         });
 
+        jLabel2.setFont(new java.awt.Font("Stencil", 0, 12)); // NOI18N
+        jLabel2.setText("Deserto");
+
+        jLabel3.setFont(new java.awt.Font("Stencil", 0, 12)); // NOI18N
+        jLabel3.setText("Citta' distrutta");
+
+        jLabel4.setFont(new java.awt.Font("Stencil", 0, 12)); // NOI18N
+        jLabel4.setText("Mare");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(98, 98, 98)
+                .addComponent(jLabel2)
+                .addGap(143, 143, 143)
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel4)
+                .addGap(120, 120, 120))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -119,7 +147,12 @@ public class FormMap extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(btnDeserto, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(btnCittaDistrutta, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel4))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(lblDescrizione, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnNext, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -141,7 +174,7 @@ public class FormMap extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextActionPerformed
-        formPersonaggio = new FormPersonaggio(mappa, fs);
+        formPersonaggio = new FormPersonaggio(mappa, fs, this);
         formPersonaggio.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_btnNextActionPerformed
@@ -171,6 +204,9 @@ public class FormMap extends javax.swing.JFrame {
     private javax.swing.JButton btnMare;
     private javax.swing.JButton btnNext;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblDescrizione;
     // End of variables declaration//GEN-END:variables
