@@ -99,8 +99,8 @@ public class GameManager implements Serializable{
         return personaggio.cura();
     }
     
-    public void abilitaSpecial(){
-        personaggio.abilitaSpecial();
+    public String abilitaSpecial(){
+        return personaggio.abilitaSpecial();
     }
     
     public int getSalute(){

@@ -17,8 +17,9 @@ public class Medico extends Personaggio{
     }
     
     @Override
-    public void abilitaSpecial(){
+    public String abilitaSpecial(){
         salute = saluteMax;
         nMedicine++;
+        return "\nAbilita Speciale: medicine+1, salute è tornato al massimo";
     }
 }

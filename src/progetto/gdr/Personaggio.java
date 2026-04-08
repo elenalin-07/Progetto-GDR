@@ -26,7 +26,7 @@ public abstract class Personaggio implements Serializable{
         salute = saluteMax;
     }
     
-    public abstract void abilitaSpecial();
+    public abstract String abilitaSpecial();
     
     public int getSalute(){
         return salute;

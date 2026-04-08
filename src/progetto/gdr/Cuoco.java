@@ -16,11 +16,12 @@ public class Cuoco extends Personaggio{
     }
     
     @Override
-    public void abilitaSpecial(){
+    public String abilitaSpecial(){
         nCibo ++;
         nAcqua += 2;
         fame = 0;
         sete = 0;
         nMedicine = 0;
+        return "\nAbilita Speciale: fame e sete azzerati, cibo+1 e acqua+2";
     }
 }

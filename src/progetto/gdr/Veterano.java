@@ -15,9 +15,10 @@ public class Veterano extends Personaggio{
     }
     
     @Override
-    public void abilitaSpecial(){
+    public String abilitaSpecial(){
         nCibo++;
         salute = saluteMax;
         attaco += 20;
+        return "\nAbilita Speciale: cibo+1, attaco+20, salute è tornato al massimo";
     }
 }
