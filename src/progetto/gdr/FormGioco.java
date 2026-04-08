@@ -435,7 +435,7 @@ public class FormGioco extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSalvaActionPerformed
 
     private void btnAbilitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAbilitaActionPerformed
-        gameManager.abilitaSpecial();
+        ttaEvento.append(gameManager.abilitaSpecial());
         setDati();
     }//GEN-LAST:event_btnAbilitaActionPerformed
 
