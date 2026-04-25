@@ -47,8 +47,7 @@ public class GameManager implements Serializable{
             click = 0;
         }
         time = times[click];
-        if(turni/4 != 0) days = turni/4;
-        else if(turni/4 == 1) days = 2;
+        if(turni/4 != 0) days = turni/4 +1;
         
         if(personaggio.fame <= 50) personaggio.fame++;
         if(personaggio.sete <= 50) personaggio.sete++;
@@ -165,5 +164,9 @@ public class GameManager implements Serializable{
         this.click = click;
         this.nickname = nickname;
         this.time = time;
+    }
+
+    public int getClick() {
+        return click;
     }
 }

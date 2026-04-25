@@ -3,17 +3,23 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/lin.elena/Documents/GitHub/Progetto-GDR/src/progetto/gdr/Personaggio.java</file>
-            <file>file:/C:/Users/lin.elena/Documents/GitHub/Progetto-GDR/src/progetto/gdr/GameManager.java</file>
-            <file>file:/C:/Users/lin.elena/Documents/GitHub/Progetto-GDR/src/progetto/gdr/Deserto.java</file>
-            <file>file:/C:/Users/lin.elena/Documents/GitHub/Progetto-GDR/src/progetto/gdr/Mappa.java</file>
-            <file>file:/C:/Users/lin.elena/Documents/GitHub/Progetto-GDR/src/progetto/gdr/FormGioco.java</file>
-            <file>file:/C:/Users/lin.elena/Documents/GitHub/Progetto-GDR/src/progetto/gdr/FormMap.java</file>
-            <file>file:/C:/Users/lin.elena/Documents/GitHub/Progetto-GDR/src/progetto/gdr/FormPersonaggio.java</file>
-            <file>file:/C:/Users/lin.elena/Documents/GitHub/Progetto-GDR/src/progetto/gdr/FormSalvataggio.java</file>
-            <file>file:/C:/Users/lin.elena/Documents/GitHub/Progetto-GDR/src/progetto/gdr/Cuoco.java</file>
-            <file>file:/C:/Users/lin.elena/Documents/GitHub/Progetto-GDR/src/progetto/gdr/Veterano.java</file>
-            <file>file:/C:/Users/lin.elena/Documents/GitHub/Progetto-GDR/src/progetto/gdr/Medico.java</file>
+            <file>file:/C:/Users/zxt02/Documents/inf/GitHub/Progetto-GDR/src/progetto/gdr/CittaDistrutta.java</file>
+            <file>file:/C:/Users/zxt02/Documents/inf/GitHub/Progetto-GDR/src/progetto/gdr/Deserto.java</file>
+            <file>file:/C:/Users/zxt02/Documents/inf/GitHub/Progetto-GDR/src/progetto/gdr/Mare.java</file>
+            <file>file:/C:/Users/zxt02/Documents/inf/GitHub/Progetto-GDR/src/progetto/gdr/Mappa.java</file>
+            <file>file:/C:/Users/zxt02/Documents/inf/GitHub/Progetto-GDR/src/progetto/gdr/Personaggio.java</file>
+            <file>file:/C:/Users/zxt02/Documents/inf/GitHub/Progetto-GDR/src/progetto/gdr/GameManager.java</file>
+            <file>file:/C:/Users/zxt02/Documents/inf/GitHub/Progetto-GDR/src/progetto/gdr/FileManager.java</file>
+            <file>file:/C:/Users/zxt02/Documents/inf/GitHub/Progetto-GDR/src/progetto/gdr/Cuoco.java</file>
+            <file>file:/C:/Users/zxt02/Documents/inf/GitHub/Progetto-GDR/src/progetto/gdr/Medico.java</file>
+            <file>file:/C:/Users/zxt02/Documents/inf/GitHub/Progetto-GDR/src/progetto/gdr/Veterano.java</file>
+            <file>file:/C:/Users/zxt02/Documents/inf/GitHub/Progetto-GDR/src/progetto/gdr/FormMenu.java</file>
+            <file>file:/C:/Users/zxt02/Documents/inf/GitHub/Progetto-GDR/src/progetto/gdr/FormSalvataggio.java</file>
+            <file>file:/C:/Users/zxt02/Documents/inf/GitHub/Progetto-GDR/src/progetto/gdr/FormMap.java</file>
+            <file>file:/C:/Users/zxt02/Documents/inf/GitHub/Progetto-GDR/src/progetto/gdr/FormPersonaggio.java</file>
+            <file>file:/C:/Users/zxt02/Documents/inf/GitHub/Progetto-GDR/src/progetto/gdr/FormGioco.java</file>
+            <file>file:/C:/Users/zxt02/Documents/inf/GitHub/Progetto-GDR/src/progetto/gdr/Survival.java</file>
+            <file>file:/C:/Users/zxt02/Documents/inf/GitHub/Progetto-GDR/src/progetto/gdr/FormIstruzione.java</file>
         </group>
     </open-files>
 </project-private>

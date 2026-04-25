@@ -19,7 +19,7 @@ public class FormMenu extends javax.swing.JFrame {
     private FormGioco formGioco;
     private GameManager gm;
     private FormSalvataggio fs;
-    private FormIstruzione fi;
+    private FormIstruzioni fi;
     /**
      * Creates new form FormMenu
      */
@@ -28,7 +28,7 @@ public class FormMenu extends javax.swing.JFrame {
         
         fs = new FormSalvataggio();
         formMap = new FormMap(fs);
-        fi = new FormIstruzione();
+        fi = new FormIstruzioni();
         
     }
     /**
@@ -43,7 +43,7 @@ public class FormMenu extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         btnStart = new javax.swing.JButton();
-        btnIstruzione = new javax.swing.JButton();
+        btnIstruzioni = new javax.swing.JButton();
         btnContinua = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -68,15 +68,15 @@ public class FormMenu extends javax.swing.JFrame {
             }
         });
 
-        btnIstruzione.setBackground(new java.awt.Color(204, 204, 255));
-        btnIstruzione.setFont(new java.awt.Font("Stencil", 0, 12)); // NOI18N
-        btnIstruzione.setText("ISTRUZIONE");
-        btnIstruzione.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        btnIstruzione.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnIstruzione.setPreferredSize(new java.awt.Dimension(160, 50));
-        btnIstruzione.addActionListener(new java.awt.event.ActionListener() {
+        btnIstruzioni.setBackground(new java.awt.Color(204, 204, 255));
+        btnIstruzioni.setFont(new java.awt.Font("Stencil", 0, 12)); // NOI18N
+        btnIstruzioni.setText("ISTRUZIONE");
+        btnIstruzioni.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnIstruzioni.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnIstruzioni.setPreferredSize(new java.awt.Dimension(160, 50));
+        btnIstruzioni.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnIstruzioneActionPerformed(evt);
+                btnIstruzioniActionPerformed(evt);
             }
         });
 
@@ -106,7 +106,7 @@ public class FormMenu extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btnStart, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnContinua, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnIstruzione, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(btnIstruzioni, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(87, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -116,14 +116,14 @@ public class FormMenu extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addGap(68, 68, 68)
                 .addComponent(btnStart, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(40, 40, 40)
+                .addGap(60, 60, 60)
                 .addComponent(btnContinua, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(45, 45, 45)
-                .addComponent(btnIstruzione, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(171, Short.MAX_VALUE))
+                .addGap(57, 57, 57)
+                .addComponent(btnIstruzioni, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(139, Short.MAX_VALUE))
         );
 
-        btnIstruzione.getAccessibleContext().setAccessibleName("");
+        btnIstruzioni.getAccessibleContext().setAccessibleName("");
         btnContinua.getAccessibleContext().setAccessibleName("");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -151,14 +151,14 @@ public class FormMenu extends javax.swing.JFrame {
         fs.setVisible(true);
     }//GEN-LAST:event_btnContinuaActionPerformed
 
-    private void btnIstruzioneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIstruzioneActionPerformed
+    private void btnIstruzioniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIstruzioniActionPerformed
         fi.setVisible(true);
-    }//GEN-LAST:event_btnIstruzioneActionPerformed
+    }//GEN-LAST:event_btnIstruzioniActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnContinua;
-    private javax.swing.JButton btnIstruzione;
+    private javax.swing.JButton btnIstruzioni;
     private javax.swing.JButton btnStart;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;

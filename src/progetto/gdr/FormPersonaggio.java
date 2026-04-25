@@ -5,6 +5,7 @@
 package progetto.gdr;
 
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -202,18 +203,33 @@ public class FormPersonaggio extends javax.swing.JFrame {
     private void btnCuocoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCuocoActionPerformed
         personaggio = new Cuoco();
         personaggioSelected = "cuoco";
+        JOptionPane.showMessageDialog(null, "Salute Max: 100\n"
+                + "Attacco: 30\n"
+                + "Acqua: 2\n"
+                + "Cibo: 2\n"
+                + "Medicine: 0", "Parametri iniziali del personaggio", JOptionPane.INFORMATION_MESSAGE);
         check();
     }//GEN-LAST:event_btnCuocoActionPerformed
 
     private void btnMedicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMedicoActionPerformed
         personaggio = new Medico();
         personaggioSelected = "medico";
+        JOptionPane.showMessageDialog(null, "Salute Max: 120\n"
+                + "Attacco: 30\n"
+                + "Acqua: 1\n"
+                + "Cibo: 1\n"
+                + "Medicine: 1", "Parametri iniziali del personaggio", JOptionPane.INFORMATION_MESSAGE);
         check();
     }//GEN-LAST:event_btnMedicoActionPerformed
 
     private void btnVeteranoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVeteranoActionPerformed
         personaggio = new Veterano();
         personaggioSelected = "veterano";
+        JOptionPane.showMessageDialog(null, "Salute Max: 100\n"
+                + "Attacco: 60\n"
+                + "Acqua: 1\n"
+                + "Cibo: 1\n"
+                + "Medicine: 0", "Parametri iniziali del personaggio", JOptionPane.INFORMATION_MESSAGE);
         check();
     }//GEN-LAST:event_btnVeteranoActionPerformed
 

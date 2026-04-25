@@ -20,12 +20,12 @@ import javax.swing.JPanel;
 public class FormGioco extends javax.swing.JFrame {
 
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(FormGioco.class.getName());
-    private String nome;
+    private String nome, background, backgroundFinal;
     private GameManager gameManager;
     private String[] time;
     private int tempo;
     private FormSalvataggio fs;
-    private String background;
+    private boolean abilita;
 
     /**
      * Creates new form FormGioco
@@ -53,13 +53,19 @@ public class FormGioco extends javax.swing.JFrame {
         
         if(gameManager.getMappa().getNome().equals("deserto")){
             background = "/images/deserto.JPG";
+            backgroundFinal = "/images/finalDeserto.JPG";
         }
         else if(gameManager.getMappa().getNome().equals("cittaDistrutta")){
             background = "/images/CD.JPG";
+            backgroundFinal = "/images/finalCD.JPG";
         }
         else{
             background = "/images/mare.JPG";
+            backgroundFinal = "/images/finalMare.JPG";
         }
+        
+        abilita = false;
+        btnAbilita.setEnabled(false);
         
         setDati();
     }
@@ -75,6 +81,7 @@ public class FormGioco extends javax.swing.JFrame {
         
         String[] dati = d.split("1121");
         background = dati[1];
+        if(gameManager.getDays() == 30) background = backgroundFinal;
         setDati();
         return dati[0];
     }
@@ -416,6 +423,11 @@ public class FormGioco extends javax.swing.JFrame {
             btnEsplora.setEnabled(false);
             btnSalva.setEnabled(false);
         }
+        if(gameManager.getClick() % 10 == 0 || abilita){
+            btnAbilita.setEnabled(true);
+            abilita = true;
+        }
+        else btnAbilita.setEnabled(false);
     }//GEN-LAST:event_btnEsploraActionPerformed
 
     private void btnAcquaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAcquaActionPerformed
@@ -437,6 +449,8 @@ public class FormGioco extends javax.swing.JFrame {
     private void btnAbilitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAbilitaActionPerformed
         ttaEvento.append(gameManager.abilitaSpecial());
         setDati();
+        abilita = false;
+        btnAbilita.setEnabled(false);
     }//GEN-LAST:event_btnAbilitaActionPerformed
 
 

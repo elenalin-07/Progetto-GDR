@@ -92,7 +92,7 @@ public abstract class Mappa implements Serializable{
     
     public String rifugioSicuro(){
         personaggio.addSaluteMax(10);
-        return "Trovi un rifugio sicuro dove puoi riposarti.\nRecuperi le forze e ti senti più resistente.";
+        return "Trovi un rifugio sicuro dove puoi riposarti.\nRecuperi le forze e ti senti più resistente.\n Salute massima +10";
     }
     
     public String banditi(){
